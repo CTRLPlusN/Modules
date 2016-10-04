@@ -1,0 +1,13 @@
+{% extends '@admin/base.html.twig' %}
+
+{% block body %}
+    
+    {% include '@admin/layout/header.html.twig' with {'href' : 'admin_post_add', 'icon': 'newspaper-o', 'title': 'Liste des Articles'} %}
+
+    <div class="w3-panel w3-pale-green w3-leftbar w3-rightbar w3-border-green">
+        <p><i class="fa fa-info-circle fa-3x w3-text-green"></i> Cliquer sur le titre pour modifier l'article. Ajouter d'autres en cliquant sur <i class="fa fa-plus-circle"></i>. Et sur <i class="fa fa-trash"></i>  pour les supprimer définitivement.</p>
+    </div>
+    
+    {% include '@review/post-table.html.twig' with {'posts' : posts } only %}
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends '@admin/base.html.twig' %}
+
+{% import '@template/button.html.twig' as btn %}
+
+{% block body %}
+    {% include '@admin/layout/header.html.twig' with {'href' : 'admin_link_add', 'icon': 'folder-link', 'title': 'Ajouter un Lien'} %}
+
+    <div class="w3-section w3-card-2 w3-padding">
+        {{ form_start(form, { 'attr' : { 'class': 'w3-container'} } ) }}
+        {{ form_errors(form) }}
+        <div class="grid-1 has-gutter">
+            <div class="">
+                {{ form_label(form.title, "Titre*") }}
+                {{ form_widget(form.title) }}
+                {{ form_errors(form.title) }}
+            </div>
+            <div class="">
+                {{ form_label(form.url, "URL* (http://www.monsite.com/") }}
+                {{ form_widget(form.url) }}
+                {{ form_errors(form.url) }}
+            </div>
+        </div>
+        <p><em>* champs requis</em></p>
+        {{ btn.save() }}
+        {{ form_end(form) }}
+    </div>
+
+    {% include '@link/link-admin-table.html.twig' with {'links' : links } only %}
+{% endblock %}

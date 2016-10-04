@@ -1,0 +1,5 @@
+## YAML Template.
+admin_link:
+    resource: "@CTRLPlusN/Libs/LinkManagement/Controller/LinkAdminController.php"
+    type:     annotation
+    prefix:   /secure/_admin

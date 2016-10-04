@@ -1,0 +1,48 @@
+{% extends '@admin/base.html.twig' %}
+
+{% import '@template/button.html.twig' as btn %}
+
+{% block body %}
+
+   {% include '@admin/layout/header.html.twig' with {'href' : 'admin_post_add', 'icon': 'newspaper-o', 'title': 'Publier un Article'} %}
+    <div class="w3-section w3-card-2 w3-padding">
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div class="grid-3-medium-2-tiny-1 has-gutter">
+            <div class="one-half">
+                {{ form_label(form.title, "Titre") }}
+                {{ form_widget(form.title) }}
+                {{ form_errors(form.title) }}
+            </div>
+            <div class="one-half">
+                {{ form_label(form.image, "Image d'entête") }}
+                {{ form_widget(form.image) }}
+            </div>
+            <div class="">
+                {{ form_label(form.category, "Catégorie") }}
+                {{ form_widget(form.category) }}
+                {{ form_errors(form.category) }}
+            </div>
+            <div class="">
+                {{ form_label(form.author, "Auteur") }}
+                {{ form_widget(form.author) }}
+                {{ form_errors(form.author) }}
+            </div>
+            <div class="">
+                {{ form_label(form.published, "Etats") }}
+                {{ form_widget(form.published) }}
+                {{ form_errors(form.published) }}
+            </div>
+            <div class="full">
+                {{ form_label(form.content, "Corps de texte") }}
+                {{ form_widget(form.content) }}
+                {{ form_errors(form.content) }} 
+            </div>
+            <div class="full">
+                {{ btn.save() }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}

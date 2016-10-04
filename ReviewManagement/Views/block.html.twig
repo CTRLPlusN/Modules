@@ -1,0 +1,20 @@
+{% macro block(title, datas) %}
+    <ul class="w3-ul w3-white w3-section">
+        <li class="ctrln-grey-darken-4 w3-text-white w3-round-medium"><h4 class="w3-margin-0">{{ title }}</h4></li>
+            {% for post in datas %}
+            <li class="w3-hover-light-grey">
+                <a class="w3-text-black"  href="{{ path('post_show', {'slug':post.slug } )}}" alt=""><i class="fa fa-caret-right"></i> {{ post.title|capitalize  }}</a>
+                <em><time pubdate="{{ post.created|date('Y-m-d') }}" class="w3-text-grey"> {{ post.created|localizeddate('full', 'none')}}</time></em>
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
+{% if block is same as('relatedposts') %}
+    {{ _self.block('Sur le même thème', datas) }}
+{% endif %}
+
+{% if block is same as('lastposts') %}
+    {{ _self.block('Derniers articles', datas) }}
+{% endif %}
+

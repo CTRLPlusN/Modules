@@ -1,0 +1,10 @@
+# @CTRLPlusN/Libs/routing.yml
+
+# Commenter pour désactiver un routage d'une librairie
+ctrln_routes_lib.review:
+    resource: "@CTRLPlusN/Libs/ReviewManagement/config/routing.yml"
+    prefix:   /
+    
+ctrln_routes_lib.link:
+    resource: "@CTRLPlusN/Libs/LinkManagement/config/routing.yml"
+    prefix:   /

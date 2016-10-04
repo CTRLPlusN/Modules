@@ -1,0 +1,15 @@
+# @CTRLPlusN\Libs\config.yml
+services:
+
+# Commenté une ressource pour désactiver une librairie
+imports:
+    - { resource: '@CTRLPlusN/Libs/PictureManagement/config/config.yml' }
+    - { resource: '@CTRLPlusN/Libs/ReviewManagement/config/config.yml' }
+    - { resource: '@CTRLPlusN/Libs/LinkManagement/config/config.yml' }
+
+parameters:
+    # Réorganiser l'ordre en déplassant les noms pour l'affichage dans le menu
+    libs.name:
+        - review_management
+        - picture_management
+        - link_management

@@ -1,0 +1,20 @@
+{% import '@template/table.html.twig' as layout %}
+
+    {% set labels, items = ['N°', 'Titre', 'Auteur', 'Catégorie', 'Publié', 'Créé le', 'Modifié le', 'Effacer'], posts %}
+
+    {% set content %}
+        {% for item in items %}
+            <tr>
+                {{ layout.col( loop.revindex) }}
+                {{ layout.edit( {'name': 'admin_post_edit', 'params': {'id':item.id } }, item.title) }}
+                {{ layout.col( item.author.username|default('')) }}
+                {{ layout.col( item.category.parent ? item.category.parent.title ~ '/' ~item.category.title|capitalize : item.category.title|capitalize ) }}
+                {{ layout.col( item.published ? 'Oui' : 'Non') }}
+                {{ layout.col( item.created|date('Y-m-d') ) }}
+                {{ layout.col( item.updated|date('Y-m-d') ) }}
+                {{ layout.delete( {'name': 'admin_post_delete', 'params': {'id':item.id } } ) }}
+            </tr>
+        {% endfor %}
+    {% endset %}
+
+    {{ layout.table(labels, content) }}
