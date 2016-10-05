@@ -1,6 +1,6 @@
 <?php
 
-namespace CTRLPlusN\Libs\LinkManagement\Widget\LinkBlock\TwigExtension;
+namespace CTRLPlusN\Modules\LinkManagement\Widget\LinkBlock\TwigExtension;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -26,7 +26,7 @@ class LinkBlockExtension extends \Twig_Extension {
     }
 
     public function getBlockHelper() {
-        return $this->container->get('link.widget.link_block.helper')->render($this->container->get('lib.link_management')->getLinks());
+        return $this->container->get('link.widget.link_block.helper')->render($this->container->get('module.link_management')->getLinks());
     }
 
 }

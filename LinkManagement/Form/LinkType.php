@@ -1,13 +1,13 @@
 <?php
 
-namespace CTRLPlusN\Libs\LinkManagement\Form;
+namespace CTRLPlusN\Modules\LinkManagement\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
-use CTRLPlusN\Libs\LinkManagement\Entity\Link;
+use CTRLPlusN\Modules\LinkManagement\Entity\Link;
 
 class LinkType extends AbstractType {
     

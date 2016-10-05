@@ -1,9 +1,9 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Traits;
+namespace CTRLPlusN\Modules\ReviewManagement\Traits;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use CTRLPlusN\Libs\ReviewManagement\Entity\Category;
+use CTRLPlusN\Modules\ReviewManagement\Entity\Category;
 
 trait ParentChildrenTrait {
 

@@ -1,17 +1,17 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Entity;
+namespace CTRLPlusN\Modules\ReviewManagement\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
-use CTRLPlusN\Libs\ReviewManagement\Model\Preset\DefaultPost;
+use CTRLPlusN\Modules\ReviewManagement\Model\Preset\DefaultPost;
 
 /**
  * Post
  *
  * @ORM\Table(name="post")
- * @ORM\Entity(repositoryClass="CTRLPlusN\Libs\ReviewManagement\Repository\PostRepository")
+ * @ORM\Entity(repositoryClass="CTRLPlusN\Modules\ReviewManagement\Repository\PostRepository")
  */
 class Post {
 

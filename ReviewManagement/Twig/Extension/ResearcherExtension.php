@@ -1,10 +1,10 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Twig\Extension;
+namespace CTRLPlusN\Modules\ReviewManagement\Twig\Extension;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use CTRLPlusN\Libs\ReviewManagement\Form\ResearchType;
+use CTRLPlusN\Modules\ReviewManagement\Form\ResearchType;
 
 class ResearcherExtension extends \Twig_Extension {
 

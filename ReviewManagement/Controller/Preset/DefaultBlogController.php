@@ -1,14 +1,14 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Controller\Preset;
+namespace CTRLPlusN\Modules\ReviewManagement\Controller\Preset;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use CTRLPlusN\Libs\ReviewManagement\Controller\FrontTrait\TemplateNameInterface;
-use CTRLPlusN\Libs\ReviewManagement\Controller\FrontTrait\IndexPostActionTrait;
-use CTRLPlusN\Libs\ReviewManagement\Controller\FrontTrait\ShowPostActionTrait;
-use CTRLPlusN\Libs\ReviewManagement\Controller\FrontTrait\ShowByCategoryActionTrait;
-use CTRLPlusN\Libs\ReviewManagement\Controller\FrontTrait\ResearchPostActionTrait;
+use CTRLPlusN\Modules\ReviewManagement\Controller\FrontTrait\TemplateNameInterface;
+use CTRLPlusN\Modules\ReviewManagement\Controller\FrontTrait\IndexPostActionTrait;
+use CTRLPlusN\Modules\ReviewManagement\Controller\FrontTrait\ShowPostActionTrait;
+use CTRLPlusN\Modules\ReviewManagement\Controller\FrontTrait\ShowByCategoryActionTrait;
+use CTRLPlusN\Modules\ReviewManagement\Controller\FrontTrait\ResearchPostActionTrait;
 
 class DefaultBlogController extends Controller implements TemplateNameInterface {
 

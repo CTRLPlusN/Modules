@@ -1,13 +1,13 @@
 <?php
 
-namespace CTRLPlusN\Libs\LinkManagement\Controller;
+namespace CTRLPlusN\Modules\LinkManagement\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use CTRLPlusN\Libs\LinkManagement\Entity\Link;
-use CTRLPlusN\Libs\LinkManagement\Form\LinkType;
+use CTRLPlusN\Modules\LinkManagement\Entity\Link;
+use CTRLPlusN\Modules\LinkManagement\Form\LinkType;
 
 /**
  * @Route("/link")

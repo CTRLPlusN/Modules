@@ -1,8 +1,8 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Traits;
+namespace CTRLPlusN\Modules\ReviewManagement\Traits;
 
-use CTRLPlusN\Libs\ReviewManagement\Entity\Category;
+use CTRLPlusN\Modules\ReviewManagement\Entity\Category;
 
 trait ManyToOneCategoryTrait {
 

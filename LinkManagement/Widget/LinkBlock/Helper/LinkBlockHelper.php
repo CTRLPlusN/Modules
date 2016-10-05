@@ -1,6 +1,6 @@
 <?php
 
-namespace CTRLPlusN\Libs\LinkManagement\Widget\LinkBlock\Helper;
+namespace CTRLPlusN\Modules\LinkManagement\Widget\LinkBlock\Helper;
 
 use Symfony\Component\Templating\Helper\Helper;
 use Symfony\Component\Templating\EngineInterface;

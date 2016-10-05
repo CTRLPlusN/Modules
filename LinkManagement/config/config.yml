@@ -1,16 +1,16 @@
 ## YAML Template.
 services:
-    lib.link_management:
-        class: CTRLPlusN\Libs\LinkManagement\LinkManagement
+    module.link_management:
+        class: CTRLPlusN\Modules\LinkManagement\LinkManagement
         arguments : [ "@service_container", "@doctrine.orm.entity_manager" ]
         
     link.widget.link_block.ext:
-        class : CTRLPlusN\Libs\LinkManagement\Widget\LinkBlock\TwigExtension\LinkBlockExtension
+        class : CTRLPlusN\Modules\LinkManagement\Widget\LinkBlock\TwigExtension\LinkBlockExtension
         arguments: [ "@service_container" ]
         tags:
             - { name: twig.extension }
     link.widget.link_block.helper:
-        class : CTRLPlusN\Libs\LinkManagement\Widget\LinkBlock\Helper\LinkBlockHelper
+        class : CTRLPlusN\Modules\LinkManagement\Widget\LinkBlock\Helper\LinkBlockHelper
         arguments : [ "@templating" ]
         tags :
          - { name : 'templating.helper', alias : 'linkblock_helper' }
@@ -23,7 +23,7 @@ parameters:
 
 twig:
     paths:
-        "%kernel.root_dir%/../src/CTRLPlusN/Libs/LinkManagement/Views": link
+        "%kernel.root_dir%/../src/CTRLPlusN/Modules/LinkManagement/Views": link
 
 doctrine:
     orm:
@@ -32,7 +32,7 @@ doctrine:
                 mappings:
                     Link:
                         type: annotation
-                        dir: '%kernel.root_dir%/../src/CTRLPlusN/Libs/LinkManagement/Entity'
-                        prefix: CTRLPlusN\Libs\LinkManagement\Entity
+                        dir: '%kernel.root_dir%/../src/CTRLPlusN/Modules/LinkManagement/Entity'
+                        prefix: CTRLPlusN\Modules\LinkManagement\Entity
                         alias: Link
                         is_bundle: false

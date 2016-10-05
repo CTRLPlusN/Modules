@@ -1,6 +1,6 @@
 <?php
 
-namespace CTRLPlusN\Libs\LinkManagement\Entity;
+namespace CTRLPlusN\Modules\LinkManagement\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;

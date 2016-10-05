@@ -1,6 +1,6 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Controller\FrontTrait;
+namespace CTRLPlusN\Modules\ReviewManagement\Controller\FrontTrait;
 
 interface TemplateNameInterface {
     const TPL_INDEX = 'AppBundle:blog:index.html.twig';

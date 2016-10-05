@@ -1,6 +1,6 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Form;
+namespace CTRLPlusN\Modules\ReviewManagement\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -12,7 +12,7 @@ use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use FM\ElfinderBundle\Form\Type\ElFinderType;
 use Doctrine\Common\Persistence\ObjectManager;
 use CTRLPlusN\Components\Extras\DataTransformer\NumberIdTransformer;
-use CTRLPlusN\Libs\ReviewManagement\Entity\Post;
+use CTRLPlusN\Modules\ReviewManagement\Entity\Post;
 
 class PostType extends AbstractType {
 

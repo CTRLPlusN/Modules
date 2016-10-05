@@ -1,6 +1,6 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Widget\ReviewBlock;
+namespace CTRLPlusN\Modules\ReviewManagement\Widget\ReviewBlock;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;

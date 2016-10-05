@@ -1,6 +1,6 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Widget\ReviewBlock\TwigExtension;
+namespace CTRLPlusN\Modules\ReviewManagement\Widget\ReviewBlock\TwigExtension;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 

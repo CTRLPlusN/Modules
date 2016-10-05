@@ -1,9 +1,9 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Controller\FrontTrait;
+namespace CTRLPlusN\Modules\ReviewManagement\Controller\FrontTrait;
 
 use Symfony\Component\HttpFoundation\Request;
-use CTRLPlusN\Libs\ReviewManagement\Entity\Category;
+use CTRLPlusN\Modules\ReviewManagement\Entity\Category;
 
 trait ShowByCategoryActionTrait {
 
@@ -27,7 +27,7 @@ trait ShowByCategoryActionTrait {
             'published' => true,
             'category' => $arr,
         );
-        $posts = $this->container->get('lib.review_management')->findAllPosts($num);
+        $posts = $this->container->get('module.review_management')->findAllPosts($num);
 
         return $this->render(self::TPL_SINGLE_CATEGORY, array(
                     'datas' => $posts,

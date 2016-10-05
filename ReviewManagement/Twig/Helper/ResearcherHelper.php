@@ -1,6 +1,6 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Twig\Helper;
+namespace CTRLPlusN\Modules\ReviewManagement\Twig\Helper;
 
 use Symfony\Component\Templating\Helper\Helper;
 use Symfony\Component\Templating\EngineInterface;

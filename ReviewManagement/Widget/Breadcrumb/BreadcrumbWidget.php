@@ -1,10 +1,10 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Widget\Breadcrumb;
+namespace CTRLPlusN\Modules\ReviewManagement\Widget\Breadcrumb;
 
 use CTRLPlusN\Components\Breadcrumb\Breadcrumb;
-use CTRLPlusN\Libs\ReviewManagement\Entity\Post;
-use CTRLPlusN\Libs\ReviewManagement\Entity\Category;
+use CTRLPlusN\Modules\ReviewManagement\Entity\Post;
+use CTRLPlusN\Modules\ReviewManagement\Entity\Category;
 
 class BreadcrumbWidget extends Breadcrumb {
 

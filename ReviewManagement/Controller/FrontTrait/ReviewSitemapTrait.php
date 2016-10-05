@@ -1,9 +1,9 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Controller\FrontTrait;
+namespace CTRLPlusN\Modules\ReviewManagement\Controller\FrontTrait;
 
-use CTRLPlusN\Libs\ReviewManagement\Entity\Post;
-use CTRLPlusN\Libs\ReviewManagement\Entity\Category;
+use CTRLPlusN\Modules\ReviewManagement\Entity\Post;
+use CTRLPlusN\Modules\ReviewManagement\Entity\Category;
 
 trait ReviewSitemapTrait {
 

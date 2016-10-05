@@ -1,13 +1,13 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Controller;
+namespace CTRLPlusN\Modules\ReviewManagement\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use CTRLPlusN\Libs\ReviewManagement\Entity\Post;
-use CTRLPlusN\Libs\ReviewManagement\Form\PostType;
+use CTRLPlusN\Modules\ReviewManagement\Entity\Post;
+use CTRLPlusN\Modules\ReviewManagement\Form\PostType;
 
 /**
  * @Route("/post")

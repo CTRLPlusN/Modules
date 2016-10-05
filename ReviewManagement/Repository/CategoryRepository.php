@@ -1,6 +1,6 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Repository;
+namespace CTRLPlusN\Modules\ReviewManagement\Repository;
 
 use CTRLPlusN\Extensions\Doctrine\Repository\AdvancedEntityRepository;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Controller\FrontTrait;
+namespace CTRLPlusN\Modules\ReviewManagement\Controller\FrontTrait;
 
 use Symfony\Component\HttpFoundation\Request;
-use CTRLPlusN\Libs\ReviewManagement\Form\ResearchType;
+use CTRLPlusN\Modules\ReviewManagement\Form\ResearchType;
 
 trait ResearchPostActionTrait {
 
@@ -16,7 +16,7 @@ trait ResearchPostActionTrait {
         $form = $this->createForm(ResearchType::class, null);
         if ($form->handleRequest($request)->isValid()) {
             $entry = $form->getData();
-            $posts = $this->get('lib.researcher.ext')->getResults($entry['string'], $num);
+            $posts = $this->get('module.researcher.ext')->getResults($entry['string'], $num);
         }
 
         return $this->render(self::TPL_RESEARCH, array(

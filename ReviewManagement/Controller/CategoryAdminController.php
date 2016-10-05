@@ -1,13 +1,13 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Controller;
+namespace CTRLPlusN\Modules\ReviewManagement\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use CTRLPlusN\Libs\ReviewManagement\Entity\Category;
-use CTRLPlusN\Libs\ReviewManagement\Form\CategoryType;
+use CTRLPlusN\Modules\ReviewManagement\Entity\Category;
+use CTRLPlusN\Modules\ReviewManagement\Form\CategoryType;
 
 /**
  * @Route("/category")

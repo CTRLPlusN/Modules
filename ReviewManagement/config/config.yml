@@ -1,45 +1,45 @@
-# @CTRLPlusN\Libs\ReviewManagement\config\config.yml
+# @CTRLPlusN\Modules\ReviewManagement\config\config.yml
 services:
-    lib.review_management:
-        class: CTRLPlusN\Libs\ReviewManagement\ReviewManagement
+    module.review_management:
+        class: CTRLPlusN\Modules\ReviewManagement\ReviewManagement
         arguments : [ "@service_container", "@doctrine.orm.entity_manager" ]
     review.type.post:
-        class: CTRLPlusN\Libs\ReviewManagement\Form\PostType
+        class: CTRLPlusN\Modules\ReviewManagement\Form\PostType
         arguments: [ "@doctrine.orm.entity_manager" ]
         tags:
             - { name: form.type }
    # Post Researcher
     review.type.research:
-        class: CTRLPlusN\Libs\ReviewManagement\Form\ResearchType
+        class: CTRLPlusN\Modules\ReviewManagement\Form\ResearchType
         arguments: [ "@router" ]
         tags:
             - { name: form.type }
     review.researcher.ext:
-        class: CTRLPlusN\Libs\ReviewManagement\Twig\Extension\ResearcherExtension
+        class: CTRLPlusN\Modules\ReviewManagement\Twig\Extension\ResearcherExtension
         arguments: [ "@doctrine.orm.entity_manager", "@service_container" ]
         tags:
             - { name: twig.extension }
     review.researcher.helper:
-        class : CTRLPlusN\Libs\ReviewManagement\Twig\Helper\ResearcherHelper
+        class : CTRLPlusN\Modules\ReviewManagement\Twig\Helper\ResearcherHelper
         arguments : [ "@templating" ]
         tags :
          - { name : 'templating.helper', alias : 'review_researcher_helper' }
          
    # Widget : Breadcrumb
     review.widget.breadcrumb:
-        class : CTRLPlusN\Libs\ReviewManagement\Widget\Breadcrumb\BreadcrumbWidget
+        class : CTRLPlusN\Modules\ReviewManagement\Widget\Breadcrumb\BreadcrumbWidget
 
     # Widget : ReviewBlock
     review.widget.review_block:
-        class : CTRLPlusN\Libs\ReviewManagement\Widget\ReviewBlock\ReviewBlockWidget
+        class : CTRLPlusN\Modules\ReviewManagement\Widget\ReviewBlock\ReviewBlockWidget
         arguments: [ "@doctrine.orm.entity_manager", "@service_container" ]
     review.widget.review_block.ext:
-        class : CTRLPlusN\Libs\ReviewManagement\Widget\ReviewBlock\TwigExtension\ReviewBlockExtension
+        class : CTRLPlusN\Modules\ReviewManagement\Widget\ReviewBlock\TwigExtension\ReviewBlockExtension
         arguments: [ "@service_container" ]
         tags:
             - { name: twig.extension }
     review.widget.review_block.helper:
-        class : CTRLPlusN\Libs\ReviewManagement\Widget\ReviewBlock\Helper\ReviewBlockHelper
+        class : CTRLPlusN\Modules\ReviewManagement\Widget\ReviewBlock\Helper\ReviewBlockHelper
         arguments : [ "@templating" ]
         tags :
          - { name : 'templating.helper', alias : 'reviewblock_helper' }
@@ -54,7 +54,7 @@ parameters:
 
 twig:
     paths:
-        "%kernel.root_dir%/../src/CTRLPlusN/Libs/ReviewManagement/Views": review
+        "%kernel.root_dir%/../src/CTRLPlusN/Modules/ReviewManagement/Views": review
 
 doctrine:
     orm:
@@ -63,7 +63,7 @@ doctrine:
                 mappings:
                     Review:
                         type: annotation
-                        dir: '%kernel.root_dir%/../src/CTRLPlusN/Libs/ReviewManagement/Entity'
-                        prefix: CTRLPlusN\Libs\ReviewManagement\Entity
+                        dir: '%kernel.root_dir%/../src/CTRLPlusN/Modules/ReviewManagement/Entity'
+                        prefix: CTRLPlusN\Modules\ReviewManagement\Entity
                         alias: Review
                         is_bundle: false

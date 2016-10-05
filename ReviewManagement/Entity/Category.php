@@ -1,21 +1,21 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Entity;
+namespace CTRLPlusN\Modules\ReviewManagement\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
-use CTRLPlusN\Libs\ReviewManagement\Entity\Post;
+use CTRLPlusN\Modules\ReviewManagement\Entity\Post;
 use CTRLPlusN\Components\Extras\Methods\Entity\EntityTrait;
 use CTRLPlusN\Components\Extras\Methods\Entity\DescriptionTrait;
-use CTRLPlusN\Libs\ReviewManagement\Traits\ParentChildrenTrait;
+use CTRLPlusN\Modules\ReviewManagement\Traits\ParentChildrenTrait;
 
 /**
  * Post
  *
  * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="CTRLPlusN\Libs\ReviewManagement\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="CTRLPlusN\Modules\ReviewManagement\Repository\CategoryRepository")
  */
 class Category {
 

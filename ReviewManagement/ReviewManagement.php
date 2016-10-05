@@ -1,11 +1,11 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement;
+namespace CTRLPlusN\Modules\ReviewManagement;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use CTRLPlusN\Libs\ReviewManagement\Entity\Category;
-use CTRLPlusN\Libs\ReviewManagement\Entity\Post;
+use CTRLPlusN\Modules\ReviewManagement\Entity\Category;
+use CTRLPlusN\Modules\ReviewManagement\Entity\Post;
 
 class ReviewManagement {
 

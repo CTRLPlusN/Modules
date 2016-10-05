@@ -1,9 +1,9 @@
 admin_post:
-    resource: "@CTRLPlusN/Libs/ReviewManagement/Controller/PostAdminController.php"
+    resource: "@CTRLPlusN/Modules/ReviewManagement/Controller/PostAdminController.php"
     type:     annotation
     prefix:   /secure/_admin
 
 admin_category:
-    resource: "@CTRLPlusN/Libs/ReviewManagement/Controller/CategoryAdminController.php"
+    resource: "@CTRLPlusN/Modules/ReviewManagement/Controller/CategoryAdminController.php"
     type:     annotation
     prefix:   /secure/_admin

@@ -1,6 +1,6 @@
 <?php
 
-namespace CTRLPlusN\Libs\LinkManagement;
+namespace CTRLPlusN\Modules\LinkManagement;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\Common\Persistence\ObjectManager;

@@ -1,6 +1,6 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Widget\ReviewBlock\Helper;
+namespace CTRLPlusN\Modules\ReviewManagement\Widget\ReviewBlock\Helper;
 
 use Symfony\Component\Templating\Helper\Helper;
 use Symfony\Component\Templating\EngineInterface;

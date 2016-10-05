@@ -1,8 +1,8 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Controller\FrontTrait;
+namespace CTRLPlusN\Modules\ReviewManagement\Controller\FrontTrait;
 
-use CTRLPlusN\Libs\ReviewManagement\Entity\Post;
+use CTRLPlusN\Modules\ReviewManagement\Entity\Post;
 
 trait ShowPostActionTrait {
 

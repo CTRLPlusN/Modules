@@ -1,6 +1,6 @@
 <?php
 
-namespace CTRLPlusN\Libs\ReviewManagement\Controller\FrontTrait;
+namespace CTRLPlusN\Modules\ReviewManagement\Controller\FrontTrait;
 
 use Symfony\Component\HttpFoundation\Request;
 
@@ -12,7 +12,7 @@ trait IndexPostActionTrait {
      */
     public function indexPostAction(Request $request, $num) {
 
-        $posts = $this->container->get('lib.review_management')->findAllPosts($num);
+        $posts = $this->container->get('module.review_management')->findAllPosts($num);
 
         return $this->render(self::TPL_INDEX, array(
                     'datas' => $posts,
