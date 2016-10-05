@@ -5,6 +5,10 @@ ctrln_routes_module.review:
     resource: "@CTRLPlusN/Modules/ReviewModule/config/routing.yml"
     prefix:   /
     
+ctrln_routes_module.picture:
+    resource: "@CTRLPlusN/Modules/PictureModule/config/routing.yml"
+    prefix:   /
+    
 ctrln_routes_module.link:
     resource: "@CTRLPlusN/Modules/LinkModule/config/routing.yml"
     prefix:   /

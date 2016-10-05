@@ -8,8 +8,21 @@ imports:
 
 parameters:
     menu.admin.picture_module:
-        - { icon: sliders, name: Albums, route: admin_album_index, params: {} }
-        - { icon: folder-open-o, name: Photos, route: admin_image_index, params: {} }
-        - { icon: picture-o, name: Slideshow, route: admin_slideshow, params: {} }
-    entity.album: CTRLPlusN\Bundles\AppBundle\Entity\Album
-    entity.image: CTRLPlusN\Bundles\AppBundle\Entity\Image
+        - { icon: folder-open-o, name: Albums, route: admin_album_index, params: {} }
+        - { icon: picture-o, name: Photos, route: admin_image_index, params: {} }
+        
+twig:
+    paths:
+        "%kernel.root_dir%/../src/CTRLPlusN/Modules/PictureModule/Views": picture
+        
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    Picture:
+                        type: annotation
+                        dir: '%kernel.root_dir%/../src/CTRLPlusN/Modules/PictureModule/Entity'
+                        prefix: CTRLPlusN\Modules\PictureModule\Entity
+                        alias: Picture
+                        is_bundle: false

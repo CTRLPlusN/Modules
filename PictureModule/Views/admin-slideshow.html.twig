@@ -1,0 +1,24 @@
+{% extends '@admin/base.html.twig' %}
+
+{% block body %}
+
+    {% include('@admin/layout:header.html.twig') with {'icon': 'sliders', 'title': 'Slideshow'} %}
+
+    <div class="w3-section w3-card-2 w3-padding">
+        
+        <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow">
+            <p>
+                Le Slideshow (Carousel ou défileur d'image) doit contenir des images de résolution de 1900*800.<br>
+                Un modèle de fichier .PSD est disponible permettant de recadrer vos photos dans cette résolution: 
+                <a href="{{ asset('uploads/slideshow/slideshow_modele.zip') }}">Télécharger le modèle</a>
+            </p>
+        </div>
+        {% include '@widget/slideshow-form-config.html.twig' with {'form':form } %}
+    </div>
+
+{% endblock %}
+
+{% block javascripts  %}
+    {{ parent() }}
+    {% include '@widget/slideshow-form-script.html.twig' with {'form':form } %}
+{% endblock %}

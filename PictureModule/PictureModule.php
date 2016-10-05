@@ -1,6 +1,6 @@
 <?php
 
-namespace CTRLPlusN\Modules\PictureModule\PictureModule;
+namespace CTRLPlusN\Modules\PictureModule;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
 

@@ -1,0 +1,4 @@
+admin_picture:
+    resource: "@CTRLPlusN/Modules/PictureModule/Controller/PictureAdminController.php"
+    type:     annotation
+    prefix:   /secure/_admin

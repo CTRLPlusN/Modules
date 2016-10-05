@@ -1,0 +1,30 @@
+{% extends '@admin/base.html.twig' %}
+
+{% set images = images %}
+{% block body %}
+    {% include('@admin/layout/header.html.twig') with {'icon': 'picture-o', 'title': 'Liste des Photos'} %}
+
+    <div class="w3-padding w3-section w3-card-2">
+        <span>Filtres : </span><a href="{{ path('admin_image_index', {'filter':'All'} ) }}">Tous</a> | <a href="{{ path('admin_image_index', {'filter':'Null'} ) }}">Sans album</a>
+    </div>
+    <div class="w3-padding w3-section w3-card-2">
+        <div class="grid-5-small-2 has-gutter">
+            {% for image in images %}
+                <div class="w3-center w3-border w3-round w3-padding w3-light-grey w3-margin-bottom">
+                    <div class="w3-display-container">
+                        <a href="{{ path('admin_image_edit', {'id': image.id }) }}" title="Editer : {{ image.title }}">
+                            <img src="{{ absolute_url(asset(image.relativePath)) }}" style="width: 100%">
+                        </a>
+                        <div class="w3-display-topright w3-hide-medium w3-small">
+                            <a href="{{ path('admin_image_delete', {'id': image.id} ) }}" title="Supprimer" class="w3-tag w3-hover-red w3-text-white w3-padding "><i class=" fa fa-trash"></i></a>
+                        </div>
+                    </div>
+                    <figcaption class="w3-small">Ajouté le : {{ image.created|date('Y-m-d')}} </figcaption>
+                    <a class="w3-hover-text-lime w3-small" href="{{ path('admin_album_edit', {'id':image.album.id})}}" title="Album : {{ image.album.title }}" >
+                        {{ image.album.title }}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

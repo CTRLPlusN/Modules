@@ -1,0 +1,62 @@
+{% extends '@admin/base.html.twig' %}
+
+{% set css_form = 'w3-container w3-margin-top w3-margin-bottom' %}
+
+{% block body %}
+
+    {% include('@admin/layout/header.html.twig') with {'icon': 'file-o', 'title': 'Modifier une photo'} %}
+
+    <div class="w3-section w3-card-2 w3-padding">
+        <div class="w3-container ctrln-img-center">
+            <img class="w3-padding-24" id="image_thumb" src="{{absolute_url(asset(image.relativePath|default('uploads/design/no-image-box.png')) ) }}" style="width: 100%; max-width: 720px"/>
+        </div>
+        {{ form_start(form, { 'attr' : { 'class': css_form} } ) }}
+        {{ form_errors(form) }}
+        <div class="grid-2 has-gutter">
+            <div class="one-half">
+                {{ form_label(form.title, "Titre*") }}
+                {{ form_widget(form.title) }}
+                {{ form_errors(form.title) }}
+            </div>
+            <div class="one-half">
+                {{ form_label(form.location, "Lieu") }}
+                {{ form_widget(form.location) }}
+                {{ form_errors(form.location) }}
+            </div>
+            <div class="full">
+                {{ form_label(form.mkdatetime, "Date d eprise de vue") }}
+                {{ form_widget(form.mkdatetime, { 'attr': { 'class': 'grid-2 has-gutter'} }) }}
+                {{ form_errors(form.mkdatetime) }}
+            </div>
+            <div class="one-half">
+                {{ form_label(form.album, "Album") }}
+                {{ form_widget(form.album) }}
+                {{ form_errors(form.album) }}
+            </div>
+            <div class="full">
+                {{ form_label(form.relativePath, "Importer le fichier *") }}
+                {{ form_widget(form.relativePath ) }}
+            </div>
+            <div class="full">
+                {{ form_label(form.description, "Description") }}
+                {{ form_widget(form.description , {'attr' : { 'rows':10 } }) }}
+            </div>
+        </div>
+        <p><em>* champs requis</em></p>
+        <button  class="w3-btn w3-black w3-hover-lime w3-margin-top" type="submit">Enregistrer</button>
+        {{ form_end(form) }}
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts  %}
+    {{ parent() }}
+    <script>
+        // Affiche l'image corespondante de l'input ElFinder
+        $('#image_relativePath').bind("change paste keyup", function () {
+            var new_src = $(this).val();
+            $('#image_thumb').attr("src", new_src);
+        });
+    </script>
+{% endblock %}
