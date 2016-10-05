@@ -1,0 +1,69 @@
+# @CTRLPlusN\Modules\ReviewModule\config\config.yml
+services:
+    module.review_module:
+        class: CTRLPlusN\Modules\ReviewModule\ReviewModule
+        arguments : [ "@service_container", "@doctrine.orm.entity_manager" ]
+    review.type.post:
+        class: CTRLPlusN\Modules\ReviewModule\Form\PostType
+        arguments: [ "@doctrine.orm.entity_manager" ]
+        tags:
+            - { name: form.type }
+   # Post Researcher
+    review.type.research:
+        class: CTRLPlusN\Modules\ReviewModule\Form\ResearchType
+        arguments: [ "@router" ]
+        tags:
+            - { name: form.type }
+    review.researcher.ext:
+        class: CTRLPlusN\Modules\ReviewModule\Twig\Extension\ResearcherExtension
+        arguments: [ "@doctrine.orm.entity_manager", "@service_container" ]
+        tags:
+            - { name: twig.extension }
+    review.researcher.helper:
+        class : CTRLPlusN\Modules\ReviewModule\Twig\Helper\ResearcherHelper
+        arguments : [ "@templating" ]
+        tags :
+         - { name : 'templating.helper', alias : 'review_researcher_helper' }
+         
+   # Widget : Breadcrumb
+    review.widget.breadcrumb:
+        class : CTRLPlusN\Modules\ReviewModule\Widget\Breadcrumb\BreadcrumbWidget
+
+    # Widget : ReviewBlock
+    review.widget.review_block:
+        class : CTRLPlusN\Modules\ReviewModule\Widget\ReviewBlock\ReviewBlockWidget
+        arguments: [ "@doctrine.orm.entity_manager", "@service_container" ]
+    review.widget.review_block.ext:
+        class : CTRLPlusN\Modules\ReviewModule\Widget\ReviewBlock\TwigExtension\ReviewBlockExtension
+        arguments: [ "@service_container" ]
+        tags:
+            - { name: twig.extension }
+    review.widget.review_block.helper:
+        class : CTRLPlusN\Modules\ReviewModule\Widget\ReviewBlock\Helper\ReviewBlockHelper
+        arguments : [ "@templating" ]
+        tags :
+         - { name : 'templating.helper', alias : 'reviewblock_helper' }
+         
+imports:
+
+parameters:
+    # Configuration de l'admin menu
+    menu.admin.review_module:
+        - { icon: newspaper, name: Article, route: admin_post_index, params: {} }
+        - { icon: bookmark, name: Catégorie, route: admin_category_index, params: {} }
+
+twig:
+    paths:
+        "%kernel.root_dir%/../src/CTRLPlusN/Modules/ReviewModule/Views": review
+
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    Review:
+                        type: annotation
+                        dir: '%kernel.root_dir%/../src/CTRLPlusN/Modules/ReviewModule/Entity'
+                        prefix: CTRLPlusN\Modules\ReviewModule\Entity
+                        alias: Review
+                        is_bundle: false

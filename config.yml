@@ -3,13 +3,13 @@ services:
 
 # Commenté une ressource pour désactiver une modulerairie
 imports:
-    - { resource: '@CTRLPlusN/Modules/PictureManagement/config/config.yml' }
-    - { resource: '@CTRLPlusN/Modules/ReviewManagement/config/config.yml' }
-    - { resource: '@CTRLPlusN/Modules/LinkManagement/config/config.yml' }
+    - { resource: '@CTRLPlusN/Modules/PictureModule/config/config.yml' }
+    - { resource: '@CTRLPlusN/Modules/ReviewModule/config/config.yml' }
+    - { resource: '@CTRLPlusN/Modules/LinkModule/config/config.yml' }
 
 parameters:
     # Réorganiser l'ordre en déplassant les noms pour l'affichage dans le menu
     modules.name:
-        - review_management
-        - picture_management
-        - link_management
+        - review_module
+        - picture_module
+        - link_module

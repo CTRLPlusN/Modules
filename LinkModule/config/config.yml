@@ -1,0 +1,38 @@
+## YAML Template.
+services:
+    module.link_module:
+        class: CTRLPlusN\Modules\LinkModule\LinkModule
+        arguments : [ "@service_container", "@doctrine.orm.entity_manager" ]
+        
+    link.widget.link_block.ext:
+        class : CTRLPlusN\Modules\LinkModule\Widget\LinkBlock\TwigExtension\LinkBlockExtension
+        arguments: [ "@service_container" ]
+        tags:
+            - { name: twig.extension }
+    link.widget.link_block.helper:
+        class : CTRLPlusN\Modules\LinkModule\Widget\LinkBlock\Helper\LinkBlockHelper
+        arguments : [ "@templating" ]
+        tags :
+         - { name : 'templating.helper', alias : 'linkblock_helper' }
+imports:
+
+parameters:
+    # Configuration de l'admin menu
+    menu.admin.link_module:
+        - { icon: link, name: Liens, route: admin_link_index, params: {} }
+
+twig:
+    paths:
+        "%kernel.root_dir%/../src/CTRLPlusN/Modules/LinkModule/Views": link
+
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    Link:
+                        type: annotation
+                        dir: '%kernel.root_dir%/../src/CTRLPlusN/Modules/LinkModule/Entity'
+                        prefix: CTRLPlusN\Modules\LinkModule\Entity
+                        alias: Link
+                        is_bundle: false

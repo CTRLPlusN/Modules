@@ -1,0 +1,15 @@
+# @CTRLPlusN\Modules\PictureModule\config\config.yml
+services:
+    module.picture_module:
+        class: CTRLPlusN\Modules\PictureModule\PictureModule
+        arguments : [ "@service_container" ]
+
+imports:
+
+parameters:
+    menu.admin.picture_module:
+        - { icon: sliders, name: Albums, route: admin_album_index, params: {} }
+        - { icon: folder-open-o, name: Photos, route: admin_image_index, params: {} }
+        - { icon: picture-o, name: Slideshow, route: admin_slideshow, params: {} }
+    entity.album: CTRLPlusN\Bundles\AppBundle\Entity\Album
+    entity.image: CTRLPlusN\Bundles\AppBundle\Entity\Image

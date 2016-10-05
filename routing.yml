@@ -2,9 +2,9 @@
 
 # Commenter pour désactiver un routage d'une modulerairie
 ctrln_routes_module.review:
-    resource: "@CTRLPlusN/Modules/ReviewManagement/config/routing.yml"
+    resource: "@CTRLPlusN/Modules/ReviewModule/config/routing.yml"
     prefix:   /
     
 ctrln_routes_module.link:
-    resource: "@CTRLPlusN/Modules/LinkManagement/config/routing.yml"
+    resource: "@CTRLPlusN/Modules/LinkModule/config/routing.yml"
     prefix:   /
