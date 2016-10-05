@@ -1,0 +1,18 @@
+{{form_start(form, { 'attr' : { 'class': 'w3-container'} } )}}
+{{ form_errors(form) }}
+<div class="grid-1 has-gutter">
+    <div class="">
+        {{ form_label(form.author, 'Nom et Prénom' ) }}
+        {{form_widget(form.author) }}
+        {{ form_errors(form.author) }}
+    </div>
+    <div class="">
+        {{ form_label(form.content, 'Votre message' ) }}
+        {{form_widget(form.content, {'attr' : {'rows': 6 } } ) }}
+        {{ form_errors(form.content) }}
+    </div>
+    <div class="full w3-center w3-padding-32">
+        <button type="submit" class="w3-btn w3-black w3-hover-lime w3-margin-top" title="Envoyer le message ">Envoyer le message</button>
+    </div>
+</div>
+{{form_end(form)}}

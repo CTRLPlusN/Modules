@@ -1,0 +1,17 @@
+{% import '@template/table.html.twig' as layout %}
+
+{% set labels, items = ['N°', 'Auteur', 'Message', 'Créé le', 'Effacer'], messages %}
+
+{% set content %}
+    {% for item in items %}
+        <tr>
+            {{ layout.col( loop.revindex) }}
+            {{ layout.col( item.author) }}
+            {{ layout.col( item.content) }}
+            {{ layout.col( item.created|date('Y-m-d') ) }}
+            {{ layout.delete( {'name': 'admin_guestbook_delete', 'params': {'id':item.id } } ) }}
+        </tr>
+    {% endfor %}
+{% endset %}
+
+{{ layout.table(labels, content) }}

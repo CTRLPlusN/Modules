@@ -1,0 +1,37 @@
+# @CTRLPlusN\Modules\GuestbookModule\config\config.yml
+services:
+    module.guestbook_module:
+        class: CTRLPlusN\Modules\GuestbookModule\GuestbookModule
+        arguments : [ "@service_container", "@doctrine.orm.entity_manager" ]
+        
+    guestbook.widget.guestbook_block.ext:
+        class: CTRLPlusN\Modules\GuestbookModule\Widget\GuestbookBlock\TwigExtension\GuestbookBlockExtension
+        arguments : [ "@service_container", "@doctrine.orm.entity_manager", "@router" ]
+        tags:
+             - { name: twig.extension }
+    guestbook.widget.guestbook_block.helper:
+        class : CTRLPlusN\Modules\GuestbookModule\Widget\GuestbookBlock\Helper\GuestbookBlockHelper
+        arguments : [ "@templating" ]
+        tags :
+         - { name : 'templating.helper', alias : 'guestbook_block_helper' }
+        
+parameters:
+    # Configuration de l'admin menu
+    menu.admin.guestbook_module:
+        - { icon: book, name: "Livre d'or", route: admin_guestbook_index, params: {} }
+twig:
+    paths:
+        # Templates du composant Guestbook
+        "%kernel.root_dir%/../src/CTRLPlusN/Modules/GuestbookModule/Views": guestbook
+
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    Guestbook:
+                        type: annotation
+                        dir: '%kernel.root_dir%/../src/CTRLPlusN/Modules/GuestbookModule/Entity'
+                        prefix: CTRLPlusN\Modules\GuestbookModule\Entity
+                        alias: Guestbook
+                        is_bundle: false

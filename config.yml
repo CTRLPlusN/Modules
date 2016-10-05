@@ -6,6 +6,7 @@ imports:
     - { resource: '@CTRLPlusN/Modules/PictureModule/config/config.yml' }
     - { resource: '@CTRLPlusN/Modules/ReviewModule/config/config.yml' }
     - { resource: '@CTRLPlusN/Modules/LinkModule/config/config.yml' }
+    - { resource: '@CTRLPlusN/Modules/GuestbookModule/config/config.yml' }
 
 parameters:
     # Réorganiser l'ordre en déplassant les noms pour l'affichage dans le menu
@@ -13,3 +14,4 @@ parameters:
         - review_module
         - picture_module
         - link_module
+        - guestbook_module

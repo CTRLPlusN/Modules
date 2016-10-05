@@ -1,0 +1,9 @@
+## YAML Template.
+admin_guestbook:
+    resource: "@CTRLPlusN/Modules/GuestbookModule/Controller/GuestbookAdminController.php"
+    type:     annotation
+    prefix:   /secure/_admin
+    
+front_guestbook:
+    resource: "@CTRLPlusN/Modules/GuestbookModule/Controller/GuestbookFrontController.php"
+    type:     annotation
