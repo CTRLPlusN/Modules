@@ -7,7 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use CTRLPlusN\Modules\SlideshowModule\Form\SlideshowType;
-use CTRLPlusN\Modules\SlideshowModule\Model\Slideshow;
 
 /**
  * @Route("/slideshow")

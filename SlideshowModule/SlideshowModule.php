@@ -3,7 +3,7 @@
 namespace CTRLPlusN\Modules\SlideshowModule;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use JMS\Serializer\SerializerBuilder;
+use CTRLPlusN\Extensions\FileSystem\FileSystemTools;
 use CTRLPlusN\Modules\SlideshowModule\Model\Slideshow;
 
 class SlideshowModule {
@@ -15,33 +15,27 @@ class SlideshowModule {
      * ContainerInterface
      */
     protected $container;
-
+    
     /**
-     * ObjectManager
+     * FileSystemTools
      */
-    protected $em;
+    protected $fst;
 
     public function __construct(ContainerInterface $container) {
         $this->container = $container;
+        $this->fst = FileSystemTools::create();
+        $this->fst->setRelativePath('../src/CTRLPlusN/Resources/json', 'settings-slideshow.json');
     }
 
     public function loadConfiguration() {
-        try {
-            $this->container->get('components.file_finder')->find('@CTRLPlusN/Resources/json', 'settings-slideshow.json');
-            $jsonDatas = $this->container->get('components.file_finder')->getContent();
-            $serializer = SerializerBuilder::create()->build();
-            return $serializer->deserialize($jsonDatas, Slideshow::class, 'json');
-        } catch (\Exception $e) {
+        if(false === $this->fst->loadJsonData(Slideshow::class)) {
             return new Slideshow();
         }
+        return $this->fst->getDatas();
     }
 
     public function saveConfiguration($dataform) {
-        $serializer = SerializerBuilder::create()->build();
-        $jsonobj = $serializer->serialize($dataform, 'json');
-        // Génération du fichier JSON
-        $this->container->get('components.file_dumper')->dumpFile($jsonobj, 'settings-slideshow.json', "../src/CTRLPlusN/Resources/json");
-        return;
+        return $this->fst->saveJsonData($dataform);
     }
 
 }
