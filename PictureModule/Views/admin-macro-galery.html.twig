@@ -1,0 +1,113 @@
+{# HTML <img> #}
+{% macro image(dir) %}
+    <img src="{{ absolute_url(asset(dir))}}" style="width: 100%"/>
+{% endmacro %}
+
+{# HTML <a> #}
+{% macro link(route, route_params, action, content, css) %}
+    <a href="{{ path(route, route_params) }}" title="{{ action }}" class="{{ css|default('') }}">{{ content|raw }}</a>
+{% endmacro %}
+
+{# HTML <figcaption> #}
+{% macro caption(content) %}
+    <figcaption class="w3-small">
+        {{ content }}
+    </figcaption>
+{% endmacro %}
+
+{# Caption des galeries d'images #}
+{% macro caption_image(image, album) %}
+    Ajouté le : {{ image.created|date('Y-m-d')}}
+    {% if album %}
+        {% if image.album %}
+            <br />{{ _self.link('admin_album_edit', { 'id': image.album.id }, 'Editer : ' ~ image.album.title , image.album.title) }}
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+
+{# Captions des vignettes albums #}
+{% macro caption_album(album) %}
+    {{ album.title}} - {{ album.images|length }} <i class="fa fa-photo"></i>
+{% endmacro %}
+
+{# Action Editer #}
+{% macro edit_action(route, entity, dir) %}
+    {{ _self.link(route, { 'id': entity.id }, 'Editer : ' ~ entity.title , _self.image(dir)) }}
+{% endmacro %}
+
+{# Action Supprimer #}
+{% macro delete_action(route, entity) %}
+    {% set content = '<i class=" fa fa-trash"></i>' %}
+    {% set css = 'w3-tag w3-hover-red w3-text-white w3-padding' %}
+    <div class="w3-display-topright w3-hide-medium w3-small">
+        {{ _self.link(route, { 'id': entity.id }, 'Supprimer', content, css) }}
+    </div>
+{% endmacro %}
+
+{# HTMl Cellule #}
+{% macro cell(content, caption) %}
+    <div class="w3-center w3-border w3-round w3-padding w3-light-grey w3-margin-bottom">
+        <div class="w3-display-container"> {# Image container #}
+            {{ content }}
+        </div>
+        {{ caption|default('') }}
+    </div>
+{% endmacro %}
+
+{# Cellule de galerie image #}
+{% macro cell_image(image, caption) %}
+    {% set content %}
+        {{ _self.edit_action('admin_image_edit', image, image.relativePath) }}
+        {{ _self.delete_action('admin_image_delete', image) }}
+    {% endset %}
+    {{ _self.cell(content, caption) }}
+{% endmacro %}
+
+{# Cellule de galerie d'album #}
+{% macro cell_album(album, caption) %}
+    {% set content %}
+        {{ _self.edit_action('admin_album_edit', album, album.images[0].relativePath) }}
+        {{ _self.delete_action('admin_album_delete', album) }}
+    {% endset %}
+    {{ _self.cell(content, caption) }}
+{% endmacro %}
+
+{# HTML Grid galery #}
+{% macro galery(content) %}
+    <div class="w3-padding w3-section w3-card-2">
+        <div class="grid-5-small-2 has-gutter">
+            {{ content }}
+        </div>
+    </div>
+{% endmacro %}
+
+{# Album index #}
+{% macro galery_album(albums) %}
+    {% set content %} {# 1: Définir le contenu d'une cellule choisir le type (_album ou _image) #}
+        {# Boucle des cellules #}
+        {% for album in albums %}
+            {{ _self.cell_album(album, _self.caption_album(album) ) }} {# 2: Passer l'entitié de la boucle dans la cellule, et choisir le type de caption(_album ou _image)et y passer aussi l'entité #}
+        {% endfor %}
+    {% endset %}
+    {{ _self.galery(content) }} {# 3: Passer la variable content dans la macro galery #}
+{% endmacro %}
+
+{# Album edit image galery #}
+{% macro galery_album_edit(images) %}
+    {% set content %}
+        {% for image in images %}
+            {{ _self.cell_image(image, _self.caption_image(image) ) }}
+        {% endfor %}
+    {% endset %}
+    {{ _self.galery(content) }}
+{% endmacro %}
+
+{# Image index galery #}
+{% macro galery_images(images) %}
+    {% set content %}
+        {% for image in images %}
+            {{ _self.cell_image(image,  _self.caption_image(image, true) ) }}
+        {% endfor %}
+    {% endset %}
+    {{ _self.galery(content) }}
+{% endmacro %}

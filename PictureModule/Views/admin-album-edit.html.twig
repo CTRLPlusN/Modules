@@ -29,25 +29,14 @@
                 <a  class="w3-btn w3-black w3-hover-lime w3-margin-top" href="{{ path('admin_image_add', {'id':album.id }) }}"><i class="fa fa-plus"></i> Ajouter une photo</a>
             </div>
 
-                <div class="w3-padding w3-section">
-                    <div class="grid-5-small-2 has-gutter">
-                        {% for image in images %}
-                            <div class="w3-center w3-border w3-round w3-padding w3-light-grey">
-                                <div class="w3-display-container">
-                                    <a href="{{ path('admin_image_edit', {'id': image.id }) }}" title="Editer : {{ image.title }}">
-                                        <img src="{{ absolute_url(asset(image.relativePath)) }}" style="width: 100%">
-                                    </a>
-                                    <figcaption class="w3-small">Ajouté le : {{ image.created|date('Y-m-d')}} </figcaption>
-                                    <div class="w3-display-topright w3-hide-medium">
-                                        <a href="{{ path('admin_image_delete', {'id': image.id} ) }}" title="Supprimer" class="w3-tag w3-hover-red w3-text-white w3-padding "><i class=" fa fa-trash"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-        </div>
+            {% import '@picture/admin-macro-galery.html.twig' as grid %}
+            
+            {{ grid.galery_album_edit(images) }}
+
+        {% endif %}
     </div>
+</div>
+
 
 
 

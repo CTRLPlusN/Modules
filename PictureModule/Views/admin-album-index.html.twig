@@ -2,21 +2,9 @@
 
 {% block body %}
     {% include '@admin/layout/header.html.twig' with {'href' : 'admin_album_add', 'icon': 'folder-open-o', 'title': 'Liste des Albums'} %}
-    <div class="w3-section w3-card-2 w3-padding">
-        <div class="grid-6-medium-4-small-2 has-gutter">
-            {% for album in albums %}
-                <div class="w3-center w3-border w3-round w3-padding">
-                    {% if album.images is not empty %}
-                        {% set url = album.images[0].relativePath %}
-                    {% else %}
-                        {% set url = 'uploads/design/no-image-box.png' %}
-                    {% endif %}
-                    <a href="{{ path('admin_album_edit', {'id': album.id } ) }}" title="Editer album : {{ album.title }}">
-                        <img src="{{ absolute_url(asset(url)|default('') )}}" style="width: 100%; max-height: 180px;"/>
-                    </a>
-                    {{ album.title }} - {{ album.images|length }} <i class="fa fa-photo"></i>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
+
+    {% import '@picture/admin-macro-galery.html.twig' as grid %}
+
+    {{ grid.galery_album(albums) }}
+
 {% endblock %}
