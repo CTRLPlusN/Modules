@@ -16,3 +16,7 @@ ctrln_routes_module.link:
 ctrln_routes_module.guestbook:
     resource: "@CTRLPlusN/Modules/GuestbookModule/config/routing.yml"
     prefix:   /
+    
+ctrln_routes_module.slideshow:
+    resource: "@CTRLPlusN/Modules/SlideshowModule/config/routing.yml"
+    prefix:   /

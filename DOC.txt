@@ -1,0 +1,68 @@
+[ CREATION D'UN NOUVEAU MODULE ]
+Le minimum de configuration pour créer un module afin qu'il soit afficher en zone admin.
+
+[ Ajout des dossiers et fichiers ]
+- Répertoire Modules
+    > MonModule
+- Répertoire MonModule
+        # Service basic
+    - MonModule.php  
+    > Controller
+            # Controller Admin avec Annotation pour les routes
+        + MonModuleAdminController.php 
+    > Views
+            # Vue de la page admin du module
+        + admin-monmodule-index.html.twig 
+    > config
+            # Configuration du module
+        + config.yml 
+            # Routes du module
+        + routing.yml 
+
+[ config.yml ]
+services:
+    module.mon_module:
+        class: CTRLPlusN\Modules\MonModule\MonModule
+        arguments : [ "@service_container" ]
+
+parameters:
+    # Configuration de l'admin menu
+    menu.admin.mon_module:
+        - { icon: <icon_fontAwesome/>, name: <label/>, route: admin_<route_name/>, params: {} }
+
+twig:
+    paths:
+        "%kernel.root_dir%/../src/CTRLPlusN/Modules/MonModule/Views": alias du module
+
+# Si le module a besoin que doctrine charge des entités
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    MonModule:
+                        type: annotation
+                        dir: '%kernel.root_dir%/../src/CTRLPlusN/Modules/MonModule/Entity'
+                        prefix: CTRLPlusN\Modules\MonModule\Entity
+                        alias: MonModule
+                        is_bundle: false
+
+[ routing.yml ]
+admin_monmodule:
+    resource: "@CTRLPlusN/Modules/MonModule/Controller/MonModuleAdminController.php"
+    type:     annotation
+    prefix:   /secure/_admin # chemin de sécurité vers la zone admin
+
+[ Ajouter le nouveau module au fichier Module/config.yml ]
+imports:
+    - { resource: '@CTRLPlusN/Modules/MonModule/config/config.yml' }
+
+parameters:
+    # Réorganiser l'ordre en déplassant les noms pour l'affichage dans le menu
+    modules.name:
+        - monmodule_module
+
+[ Ajouter la route du nouveau module au fichier Module/routing.yml ]
+ctrln_routes_module.monmodule:
+    resource: "@CTRLPlusN/Modules/MonModule/config/routing.yml"
+    prefix:   /

@@ -1,0 +1,16 @@
+# @CTRLPlusN\Modules\SlideshowModule\config\config.yml
+services:
+    module.slideshow_module:
+        class: CTRLPlusN\Modules\SlideshowModule\SlideshowModule
+        arguments : [ "@service_container", "@doctrine.orm.entity_manager" ]
+
+imports:
+
+parameters:
+    # Configuration de l'admin menu
+    menu.admin.slideshow_module:
+        - { icon: sliders, name: Slideshow, route: admin_slideshow_index, params: {} }
+
+twig:
+    paths:
+        "%kernel.root_dir%/../src/CTRLPlusN/Modules/SlideshowModule/Views": slideshow

@@ -1,0 +1,4 @@
+admin_slideshow:
+    resource: "@CTRLPlusN/Modules/SlideshowModule/Controller/SlideshowAdminController.php"
+    type:     annotation
+    prefix:   /secure/_admin
