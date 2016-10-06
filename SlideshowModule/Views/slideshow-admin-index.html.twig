@@ -12,12 +12,12 @@
                 <a href="{{ asset('uploads/slideshow/slideshow_modele.zip') }}">Télécharger le modèle</a>
             </p>
         </div>
-       {# {% include '@widget/slideshow-form-config.html.twig' with {'form':form } %} #}
+       {% include '@slideshow/slideshow-form-config.html.twig' with {'form':form } %}
     </div>
 
 {% endblock %}
 
 {% block javascripts  %}
     {{ parent() }}
-    {# {% include '@widget/slideshow-form-script.html.twig' with {'form':form } %}#}
+    {% include '@slideshow/slideshow-form-script.html.twig' with {'form':form } %}
 {% endblock %}

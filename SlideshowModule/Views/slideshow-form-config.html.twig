@@ -1,0 +1,41 @@
+{% set css_form= 'w3-container w3-margin-top w3-margin-bottom' %}
+
+{% import '@template/button.html.twig' as btn %}
+
+{% macro itemfields(form) %}
+    <table class="w3-table">
+        <tr>
+            <td>
+                {{ form_label(form.relativePath, "Image" ) }}
+                {{ form_widget(form.relativePath ) }}
+                {{ form_errors(form.relativePath) }}
+            </td>
+            <td>
+                <a href="#"  class="w3-btn-floating w3-red w3-text-white w3-small btn-delete " title="Effacer" style="width:24px; height:24px;line-height:24px;" ><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+    </table>
+{% endmacro %}
+<header class="w3-lime w3-round  w3-padding-left">
+    <h4><i class="fa fa-caret-right"></i> Slideshow</h4>
+</header>
+{{ form_start(form, { 'attr' : { 'class': css_form} } ) }}
+{{ form_errors(form) }}
+
+{{ form_label(form.id, "ID" ) }}
+{{ form_widget(form.id ) }}
+
+{{ form_label(form.slides, "Choisissez vos photos") }}
+<div id="item-fields-list" class="w3-section" data-prototype="{% filter escape %}{{ _self.itemfields(form.slides.vars.prototype )  }}{% endfilter %}">
+    {% for itemField in form.slides %}
+        <div class="item">
+            {{ _self.itemfields(itemField)  }}
+        </div>
+    {% endfor %}
+</div>
+
+<a href="#"  id="add-item" class="w3-btn w3-section w3-padding w3-lime" title="Ajouter une Photo"><i class="fa fa-plus"></i> Photo</a>
+
+{{ form_widget(form._token) }}
+{{ btn.save() }}
+{{ form_end(form) }}

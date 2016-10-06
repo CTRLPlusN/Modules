@@ -1,0 +1,50 @@
+ <script type="text/javascript" charset="utf-8">
+    // Compte le nombre de Tasks déjà présent
+    var itemCount = '{{ form.slides|length }}';
+    $(document).ready(function () {
+        // En cliquant sur le bouton #add-item
+        $('#add-item').click(function (e) {
+            e.preventDefault();
+            // Récupération du wrapper contenant tous les champs
+            var $itemList = $('#item-fields-list');
+            // Récupération du data-prototype du wrapper
+            var newWidget = $itemList.attr('data-prototype');
+            // Remplace __name__ par l'id de la nouvelle Task
+            newWidget = newWidget.replace(/__name__/g, itemCount);
+            itemCount++;
+            // Création d'un nouveau fieldset
+            var $newFieldset = $('<div class="item"></div>').html(newWidget);
+            // Dans le nouveau fieldset on lui intégre les nouveaux champs d'une Task
+            $newFieldset.appendTo($itemList);
+            // On ajoute aussi un bouton pour effacer le fieldset d'une tâche
+            // addFormDeleteLink($newFieldset);
+            $('.btn-delete').on('click', function (e) {
+                e.preventDefault();
+                var $fieldset = $(this).closest('div.item');
+                $fieldset.remove();
+            });
+
+        });
+
+        $('.btn-delete').on('click', function (e) {
+            e.preventDefault();
+            var $fieldset = $(this).closest('div.item');
+            $fieldset.remove();
+        });
+
+    });
+    // Fonction pour ajouter un bouton effacer une Task
+    function addFormDeleteLink($newFieldset) {
+        // HTML du bouton
+        var $removeFormA = $('<a href="#"  class="btn btn-delete"><i class="fa fa-trash"></i></a>');
+        // On intégre le bouton au fieldset
+        $newFieldset.append($removeFormA);
+        // Action du bouton
+        $removeFormA.on('click', function (e) {
+            e.preventDefault();
+
+            // Supprime le fieldset
+            $newFieldset.remove();
+        });
+    }
+</script>
