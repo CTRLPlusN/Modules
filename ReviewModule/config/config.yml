@@ -49,7 +49,7 @@ imports:
 parameters:
     # Configuration de l'admin menu
     menu.admin.review_module:
-        - { icon: newspaper, name: Article, route: admin_post_index, params: {} }
+        - { icon: newspaper-o, name: Article, route: admin_post_index, params: {} }
         - { icon: bookmark, name: Catégorie, route: admin_category_index, params: {} }
 
 twig:

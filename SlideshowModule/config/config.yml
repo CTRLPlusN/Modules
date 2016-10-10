@@ -2,7 +2,6 @@
 services:
     module.slideshow_module:
         class: CTRLPlusN\Modules\SlideshowModule\SlideshowModule
-        arguments : [ "@service_container", "@doctrine.orm.entity_manager" ]
 
 imports:
 
