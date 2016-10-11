@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use FM\ElfinderBundle\Form\Type\ElFinderType;
 use Doctrine\Common\Persistence\ObjectManager;
-use CTRLPlusN\Components\Extras\DataTransformer\NumberIdTransformer;
+use CTRLPlusN\Extensions\DataTransformer\NumberIdTransformer;
 use CTRLPlusN\Modules\ReviewModule\Entity\Post;
 
 class PostType extends AbstractType {

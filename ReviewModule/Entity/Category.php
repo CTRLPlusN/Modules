@@ -7,8 +7,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use CTRLPlusN\Modules\ReviewModule\Entity\Post;
-use CTRLPlusN\Components\Extras\Methods\Entity\EntityTrait;
-use CTRLPlusN\Components\Extras\Methods\Entity\DescriptionTrait;
+use CTRLPlusN\Extensions\Entity\PropsTrait\EntityTrait;
+use CTRLPlusN\Extensions\Entity\PropsTrait\DescriptionTrait;
 use CTRLPlusN\Modules\ReviewModule\Traits\ParentChildrenTrait;
 
 /**
