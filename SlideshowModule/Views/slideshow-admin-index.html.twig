@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    {% include('@admin/layout/header.html.twig') with {'icon': 'sliders', 'title': 'Slideshow'} %}
+    {% include '@admin/layout/header.html.twig' with {'icon': 'sliders', 'title': 'Slideshow'} %}
 
     <div class="w3-section w3-card-2 w3-padding">
         <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow">
@@ -12,12 +12,8 @@
                 <a href="{{ asset('uploads/slideshow/slideshow_modele.zip') }}">Télécharger le modèle</a>
             </p>
         </div>
-       {% include '@slideshow/slideshow-form-config.html.twig' with {'form':form } %}
     </div>
 
-{% endblock %}
+    {% include '@slideshow/slideshow-form-config.html.twig' with {'form':form } %}
 
-{% block javascripts  %}
-    {{ parent() }}
-    {% include '@slideshow/slideshow-form-script.html.twig' with {'form':form } %}
 {% endblock %}
