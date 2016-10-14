@@ -16,4 +16,5 @@ class DefaultBlogController extends Controller implements TemplateNameInterface 
         ShowPostActionTrait,
         ShowByCategoryActionTrait,
         ResearchPostActionTrait;
+
 }
