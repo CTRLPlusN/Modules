@@ -1,0 +1,8 @@
+admin_static_page:
+    resource: "@CTRLPlusN/Modules/StaticPageModule/Controller/StaticPageAdminController.php"
+    type:     annotation
+    prefix:   /secure/_admin
+    
+static_page:
+    resource: "@CTRLPlusN/Modules/StaticPageModule/Controller/StaticPageController.php"
+    type:     annotation

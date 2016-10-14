@@ -3,15 +3,18 @@ services:
 
 # Commenté une ressource pour désactiver une modulerairie
 imports:
+    - { resource: '@CTRLPlusN/Modules/StaticPageModule/config/config.yml' }
     - { resource: '@CTRLPlusN/Modules/PictureModule/config/config.yml' }
     - { resource: '@CTRLPlusN/Modules/ReviewModule/config/config.yml' }
     - { resource: '@CTRLPlusN/Modules/LinkModule/config/config.yml' }
     - { resource: '@CTRLPlusN/Modules/GuestbookModule/config/config.yml' }
     - { resource: '@CTRLPlusN/Modules/SlideshowModule/config/config.yml' }
+    
 
 parameters:
     # Réorganiser l'ordre en déplassant les noms pour l'affichage dans le menu
     modules.name:
+        - staticpage_module
         - review_module
         - picture_module
         - link_module

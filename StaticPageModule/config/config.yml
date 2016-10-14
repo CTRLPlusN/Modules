@@ -1,0 +1,25 @@
+# @CTRLPlusN\Modules\StaticPageModule\config\config.yml
+services:
+    module.staticpage_module:
+        class: CTRLPlusN\Modules\StaticPageModule\StaticPageModule
+        
+parameters:
+    # Configuration de l'admin menu
+    menu.admin.staticpage_module:
+        - { icon: file, name: Page, route: admin_staticpage_index, params: {} }
+
+twig:
+    paths:
+        "%kernel.root_dir%/../src/CTRLPlusN/Modules/StaticPageModule/Views": staticpage
+
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    StaticPage:
+                        type: annotation
+                        dir: '%kernel.root_dir%/../src/CTRLPlusN/Modules/StaticPageModule/Entity'
+                        prefix: CTRLPlusN\Modules\StaticPageModule\Entity
+                        alias: StaticPage
+                        is_bundle: false

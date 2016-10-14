@@ -20,3 +20,7 @@ ctrln_routes_module.guestbook:
 ctrln_routes_module.slideshow:
     resource: "@CTRLPlusN/Modules/SlideshowModule/config/routing.yml"
     prefix:   /
+    
+ctrln_routes_module.staticpage:
+    resource: "@CTRLPlusN/Modules/StaticPageModule/config/routing.yml"
+    prefix:   /

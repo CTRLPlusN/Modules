@@ -1,0 +1,49 @@
+{% extends 'AdminBundle::base.html.twig' %}
+{% set css_form, css_input, css_select, css_label = 
+'w3-container w3-margin-top w3-margin-bottom',
+'w3-input w3-border w3-margin-bottom w3-light-grey', 
+'w3-select w3-border w3-margin-bottom w3-light-grey', 
+'w3-label'
+%}
+{% block body %}
+    {% include('AdminBundle:layout:header.html.twig') with {'href' : 'admin_staticpage_add', 'icon': 'file-o', 'title': 'Publier une Page'} %}
+    <div class="w3-section w3-card-2 w3-padding">
+        {{ form_start(form, { 'attr' : { 'class': css_form} } ) }}
+        {{ form_errors(form) }}
+        <div class="grid-3-small-1 has-gutter">
+            <div class="one-third w3-padding">
+                {{ form_label(form.title, "Titre" ) }}
+                {{ form_widget(form.title) }}
+                {{ form_errors(form.title) }}
+            </div>
+            <div class="one-third w3-padding">
+                {{ form_label(form.ref, "Référence") }}
+                {{ form_widget(form.ref) }}
+                {{ form_errors(form.ref) }}
+            </div>
+            <div class="one-third w3-padding">
+                {{ form_label(form.view, "Vue à utiliser") }}
+                {{ form_widget(form.view) }}
+                {{ form_errors(form.view) }}
+            </div>
+            <div class="one-half w3-padding">
+                {{ form_label(form.image, "Image d'entête") }}
+                {{ form_widget(form.image ) }}
+            </div>
+            <div class="one-half w3-padding">
+                {{ form_label(form.parent, "Parent") }}
+                {{ form_widget(form.parent) }}
+            </div>
+            <div class="full w3-padding">
+                {{ form_label(form.excerpt, "Résumé") }}
+                {{ form_widget(form.excerpt ) }}
+                {{ form_errors(form.excerpt) }}
+            </div>
+            <div class="full w3-padding">
+                <button class="w3-btn w3-section w3-padding ctrln-grey-darken-3 w3-text-lime" type="submit">Enregistrer</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
