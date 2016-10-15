@@ -3,6 +3,10 @@ services:
     module.staticpage_module:
         class: CTRLPlusN\Modules\StaticPageModule\StaticPageModule
         
+   # Widget : Breadcrumb
+    staticpage.widget.breadcrumb:
+        class : CTRLPlusN\Modules\StaticPageModule\Widget\Breadcrumb\BreadcrumbWidget
+        
 parameters:
     # Configuration de l'admin menu
     menu.admin.staticpage_module:

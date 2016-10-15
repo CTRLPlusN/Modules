@@ -13,7 +13,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormEvent;
 use Doctrine\ORM\EntityRepository;
 
-class PageType extends AbstractType {
+class StaticPageType extends AbstractType {
 
     /**
      * @param FormBuilderInterface $builder
