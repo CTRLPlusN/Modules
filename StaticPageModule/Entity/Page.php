@@ -104,6 +104,13 @@ class Page {
     public function __construct() {
         $this->children = new \Doctrine\Common\Collections\ArrayCollection();
     }
+    
+    /**
+     * Affichage du label indenté dans un champ select
+     */
+    public function getIndentedName() {
+        return str_repeat( " - - ", $this->lvl) . $this->title;
+    }
 
     /**
      * Set title

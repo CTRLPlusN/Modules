@@ -43,7 +43,13 @@ class StaticPageType extends AbstractType {
                             'empty_data' => null,
                             'query_builder' => function(EntityRepository $er) use ($node) {
                                 return $er->findAllItemsAvaibles($node); // Return QueryBuilder (not Array)
-                            }
+                            },
+                            'group_by' => function($val) {
+                                return '[ ' . $val->getRoot()->getTitle() . ' ]';
+                            },
+                            'choice_label' => function($val) {
+                                return $val->getIndentedName();
+                            },
                 ));
             }
         });

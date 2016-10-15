@@ -1,34 +1,43 @@
 {% extends 'AdminBundle::base.html.twig' %}
 
 {% macro recursiveCategory(item, css) %}
-    <li class="{{ css|default(null) }}">
-        <span class="w3-tag w3-red"><i class="fa fa-caret-right"></i> {{ item.title }}</span>  <span class="w3-tag">{{ item.ref }}</span> <span class="w3-tag w3-green">{{ item.view }}</span>
-        | <a href="{{ path('admin_staticpage_edit', { 'id' : item.id } ) }}"  style="display: inline-block;"><i class="fa fa-pencil"></i></a> 
-        | <a href="{{ path('admin_staticpage_delete', { 'id' : item.id } ) }}"  style="display: inline-block;"><i class="fa fa-trash"></i></a>
-            {% if item.__children|length %}
-            <ul class='w3-padding-left'>
-                {% for child in item.__children %}
-                    {{ _self.recursiveCategory(child, 'w3-padding-left') }}
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </li>
+    <div class="full w3-border-bottom">
+        <div class="grid-4 w3-padding">
+            <div class="one-quarter"><i class="fa fa-caret-right"></i> {{ item.title }}</div>
+            <div class="one-quarter">{{ item.ref }}</div>
+            <div>{{ item.view }}</div>
+            <div >
+                <a href="{{ path('admin_staticpage_edit', { 'id' : item.id } ) }}"  style="display: inline-block;"><i class="fa fa-pencil"></i></a> 
+                | <a href="{{ path('admin_staticpage_delete', { 'id' : item.id } ) }}"  style="display: inline-block;"><i class="fa fa-trash"></i></a>
+            </div>
+        </div>
+    </div>
+    {% if item.__children|length %}
+        <div class='full w3-padding-left ctrln-grey-darken-3'>
+            {% for child in item.__children %}
+                {{ _self.recursiveCategory(child, 'w3-padding-left') }}
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endmacro %}
 
 {% block body %}
     {% include('AdminBundle:layout:header.html.twig') with {'href' : 'admin_staticpage_add', 'icon': 'file-o', 'title': 'Liste des Pages'} %}
 
-    <div class="w3-container w3-card-4 w3-padding w3-margin-top">
-        <h4 class="w3-tag w3-red w3-padding"><i class="fa fa-exclamation-triangle"></i> Ne rien modifier dans cette section !</h4>
-    {% if tree %}
-        <div class='category-nestedtree'>
-            <ul class='w3-ul'>
-                {% for category in tree %}
-                    {{ _self.recursiveCategory(category, 'w3-padding-left') }}
-                {% endfor %}
-            </ul>
-        </div>
-    {% endif %}
+    <div class="w3-container w3-card-2 w3-padding w3-margin-top w3-red">
+        <h4><i class="fa fa-exclamation-triangle"></i> Ne rien modifier dans cette section !</h4>
+    </div>
+
+    <div class="w3-container w3-card-2 w3-padding w3-margin-top w3-light-grey">
+        {% if tree %}
+            <div class='category-nestedtree'>
+                <div class="grid-1 ctrln-grey-darken-4">
+                    {% for category in tree %}
+                        {{ _self.recursiveCategory(category, 'w3-padding-left') }}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
     </div>
 
 {% endblock %}
