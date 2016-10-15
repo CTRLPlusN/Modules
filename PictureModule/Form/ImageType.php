@@ -20,7 +20,7 @@ class ImageType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
 
         $builder
-                ->add('title', TextType::class)
+                ->add('title', TextType::class, array('required' => false))
                 ->add('mkdatetime', DateTimeType::class, array('required' => false))
                 ->add('location', TextType::class, array('required' => false))
                 ->add('description', TextareaType::class, array('required' => false))

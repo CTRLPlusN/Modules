@@ -19,7 +19,7 @@ class Image {
 
     /**
      * Titre de l'image
-     * @ORM\Column(type="string", length=128)
+     * @ORM\Column(type="string", length=128, nullable=true)
      * @Assert\NotBlank()
      * @Assert\Length(
      *      min = 2, max = 128,
@@ -32,7 +32,7 @@ class Image {
     /**
      * Slug basé sur le titre de l'image
      * @Gedmo\Slug(fields={"title", "id"}, updatable=true)
-     * @ORM\Column(length=128, unique=true)
+     * @ORM\Column(length=128, unique=true, nullable=true)
      */
     protected $slug;
 
