@@ -11,7 +11,11 @@ trait ShowPostActionTrait {
      */
     public function showPostAction(Post $post = null) {
 
-        return $this->render( self::TPL_SINGLE_POST , array(
+        if (false === $post->getPublished()) {
+            return $this->redirectToRoute('post_index', array(), 302);
+        }
+
+        return $this->render(self::TPL_SINGLE_POST, array(
                     'post' => $post,
                     'title' => $post->getTitle(),
                     'category' => $post->getCategory(),
