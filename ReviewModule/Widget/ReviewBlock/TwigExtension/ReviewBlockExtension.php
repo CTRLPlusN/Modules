@@ -17,23 +17,19 @@ class ReviewBlockExtension extends \Twig_Extension {
      */
     public function getFunctions() {
         return array(
-            new \Twig_SimpleFunction('ReviewBlock', array($this, 'getBlock'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('relatedposts_block', array($this, 'getBlockRelatedPosts'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFunction('lastposts_block', array($this, 'getBlockLastPosts'), array('is_safe' => array('html'))),
         );
     }
 
-    public function getBlock($block, Array $parameters = null, $limit = 5) {
-        $method = 'get' . ucfirst($block);
-        if ($this->container->hasParameter('review.block.view.' . $block)) {
-            $view = $this->container->getParameter('review.block.view.' . $block);
-        } else {
-            $view = '@review/block.html.twig';
-        }
-        return $this->container->get('review.widget.review_block.helper')->getBlockView($block, $this->$method($parameters, $limit), $view);
+    public function getBlockRelatedPosts($parameters = array(), $limit = 5) {
+        return $this->container->get('review.widget.review_block.helper')->getBlockView($this->getRelatedposts($parameters, $limit));
+    }
+    
+    public function getBlockLastPosts($area, $limit = 5) {
+        return $this->container->get('review.widget.review_block.helper')->getBlockLastPost($area, $this->getLastposts($limit));
     }
 
-    /**
-     * {{ ReviewBlock('relatedposts', {'category' : Category.id}, limit} ) }}
-     */
     public function getRelatedposts($parameters, $limit) {
         if ($parameters == null) {
             $parameters = array('category' => null);
@@ -41,10 +37,7 @@ class ReviewBlockExtension extends \Twig_Extension {
         return $this->container->get('review.widget.review_block')->findRelatedXPosts($parameters['category'], $limit);
     }
 
-    /**
-     * {{ ReviewBlock('lastposts', limit ) }}
-     */
-    protected function getLastposts($parameters, $limit) {
+    protected function getLastposts($limit) {
         return $this->container->get('review.widget.review_block')->findLastXPosts($limit);
     }
 

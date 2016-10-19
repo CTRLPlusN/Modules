@@ -16,8 +16,15 @@ class ReviewBlockHelper extends Helper {
     /**
      * @return html content
      */
-    public function getBlockView($block, $datas, $view) {
-       return $this->templating->render($view, array('block' => $block, 'datas' => $datas));
+    public function getBlockView($datas) {
+        return $this->templating->render('@review/block.html.twig', array('block' => 'relatedposts', 'datas' => $datas));
+    }
+
+    /**
+     * @return html content
+     */
+    public function getBlockLastPost($area, $datas) {
+        return $this->templating->render('@review/block.html.twig', array('block' => 'lastposts', 'area' => $area, 'datas' => $datas));
     }
 
     public function getName() {

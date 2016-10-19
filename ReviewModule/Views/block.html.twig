@@ -10,11 +10,28 @@
     </ul>
 {% endmacro %}
 
+{% macro block_footer(title, datas) %}
+    <ul class="w3-ul">
+        <li class=""><h4 class="w3-margin-0">{{ title }}</h4></li>
+            {% for post in datas %}
+            <li class="w3-border-bottom">
+                <a class=""  href="{{ path('post_show', {'slug':post.slug } )}}" alt=""><i class="fa fa-caret-right"></i> {{ post.title|capitalize  }}</a>
+                <em><time pubdate="{{ post.created|date('Y-m-d') }}" class="w3-text-grey"> {{ post.created|localizeddate('full', 'none')}}</time></em>
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
 {% if block is same as('relatedposts') %}
     {{ _self.block('Sur le même thème', datas) }}
 {% endif %}
 
 {% if block is same as('lastposts') %}
-    {{ _self.block('Derniers articles', datas) }}
+    {% if area is same as('footer') %}
+        {{ _self.block_footer('Derniers articles', datas) }}
+    {% else %}
+        {{ _self.block('Derniers articles', datas) }}
+    {% endif %}
 {% endif %}
+
 
