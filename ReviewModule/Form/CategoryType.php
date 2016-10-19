@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use CTRLPlusN\Modules\ReviewModule\Entity\Category;
 
@@ -29,6 +30,9 @@ class CategoryType extends AbstractType {
                     'query_builder' => function (\Doctrine\ORM\EntityRepository $er) use ($entity) {
                         return $er->selectMainCategories($entity); // Return QueryBuilder (not Array)
                     }));
+                    if(method_exists($entity, 'getDescription')) {
+                        $builder->add('description',TextareaType::class, array('required' => false));
+                    }
     }
 
     /**

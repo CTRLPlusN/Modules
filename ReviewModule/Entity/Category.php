@@ -24,14 +24,14 @@ class Category {
 
     /**
      * Titre de la catégorie
-     * @ORM\Column(type="string", length=100, unique=true)
+     * @ORM\Column(type="string", length=100)
      */
     protected $title;
 
     /**
      * Slug basé sur le titre de la catégorie
-     * @Gedmo\Slug(fields={"title"}, updatable=true)
-     * @ORM\Column(length=128, unique=true)
+     * @Gedmo\Slug(fields={"title", "id"}, updatable=true)
+     * @ORM\Column(length=128)
      */
     protected $slug;
 

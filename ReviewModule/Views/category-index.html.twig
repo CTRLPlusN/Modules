@@ -17,6 +17,13 @@
                 {{ form_widget(form.parent) }}
                 {{ form_errors(form.parent) }}
             </div>
+            {% if form.description %}
+                <div class="w3-col s6">
+                    {{ form_label(form.description, "Description") }}
+                    {{ form_widget(form.description) }}
+                    {{ form_errors(form.description) }}
+                </div>
+            {% endif %}
         </div>
         <button class="w3-btn w3-section w3-padding ctrln-grey-darken-3 w3-text-lime" type="submit">Enregistrer</button>
         {{ form_end(form) }}
