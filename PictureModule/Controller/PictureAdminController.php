@@ -86,7 +86,7 @@ class PictureAdminController extends Controller {
     /**
      * Ajout d'une image à partir d'un album
      * L'ajout d'image à partir de l'index n'est pas permis
-     * @Route("/image/add/{id}", name="admin_image_add" )
+     * @Route("/image/add/in-album-{id}", name="admin_image_add" )
      */
     public function addImageAction(Request $request, Album $album) {
 
@@ -107,7 +107,7 @@ class PictureAdminController extends Controller {
             )));
         }
         return $this->render('@picture/admin-image-edit.html.twig', array(
-                    'form' => $form->createView(), 'image' => $image
+                    'form' => $form->createView(), 'image' => $image, 'album' => $album
         ));
     }
 
@@ -133,7 +133,7 @@ class PictureAdminController extends Controller {
         }
 
         return $this->render('@picture/admin-image-edit.html.twig', array(
-                    'form' => $form->createView(), 'image' => $image
+                    'form' => $form->createView(), 'image' => $image, 'album' => $image->getAlbum()
         ));
     }
     

@@ -2,12 +2,12 @@
 
 {% set images = images %}
 {% block body %}
-    {% include('@admin/layout/header.html.twig') with {'icon': 'picture-o', 'title': 'Liste des Photos'} %}
-
-    <div class="w3-padding w3-section w3-card-2">
-        <span>Filtres : </span><a href="{{ path('admin_image_index', {'filter':'All'} ) }}">Tous</a> | <a href="{{ path('admin_image_index', {'filter':'Null'} ) }}">Sans album</a>
-    </div>
-    {% import '@picture/admin-macro-galery.html.twig' as grid %}
-
-    {{ grid.galery_images(images) }}
+    <section class="{{ css_section }}">
+        {{ layout.header("Liste des photos") }}
+        <div class="w3-padding w3-border-bottom">
+            <span>Filtres : </span><a href="{{ path('admin_image_index', {'filter':'All'} ) }}">Tous</a> | <a href="{{ path('admin_image_index', {'filter':'Null'} ) }}">Sans album</a>
+        </div>
+        {% import '@picture/admin-macro-galery.html.twig' as grid %}
+        {{ grid.galery_images(images) }}
+    </section>
 {% endblock %}

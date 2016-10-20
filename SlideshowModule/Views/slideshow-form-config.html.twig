@@ -1,10 +1,9 @@
-{% import '@admin/Macros/form.html.twig' as f %}
 {% import '@admin/Macros/button.html.twig' as btn %}
 
 {% macro itemfields(form) %}
-    <div class="grid-2 has-gutter">
-        <div class="two-fifth">
-            {{ form_label(form.relativePath, "Image" ) }}
+    <div class="grid-2 has-gutter  w3-section">
+        <div class="two-fifth w3-card-2 w3-padding ctrln-grey-darken-4">
+            {{ form_label(form.relativePath, "Chemin de l'image :" ) }}
             {{ form_widget(form.relativePath ) }}
             {{ form_errors(form.relativePath) }}
         </div>
@@ -16,39 +15,32 @@
     </div>
 {% endmacro %}
 
-{% set content %}
-    {{ form_start(form) }}
-    {{ form_errors(form) }}
-    <div class="grid-1 has-gutter">
-        <div class="full">
-            {{ f.header("Slideshow") }}
-        </div>
-        <div>
-            {{ form_label(form.id, "ID (ne pas modifier)" ) }}
-            {{ form_widget(form.id ) }}
-        </div>
-        <div>
-            {{ form_label(form.slides, "Ajouter ou supprimer des photos") }}
-            <div id="item-fields-list" class="w3-section" data-prototype="{% filter escape %}{{ _self.itemfields(form.slides.vars.prototype )  }}{% endfilter %}">
-                {% for itemField in form.slides %}
-                    <div class="item">
-                        {{ _self.itemfields(itemField)  }}
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="full">
-            <button type="button" id="add-item" onclick="$(document).formItemManager('addFormItem', {{ form.slides|length }});" class="w3-btn w3-section w3-padding w3-lime" title="Ajouter un réseau">
-                <i class="fa fa-plus"></i> Ajouter
-            </button>
-            {{ form_widget(form._token) }}
-            {{ btn.save() }}
+{{ form_start(form, { 'attr' : { 'class': 'w3-padding w3-padding-24'} } ) }}
+{{ form_errors(form) }}
+<div class="grid-1 has-gutter">
+    <div>
+        {{ form_label(form.id, "ID (ne pas modifier)" ) }}
+        {{ form_widget(form.id ) }}
+    </div>
+    <div>
+        {{ form_label(form.slides, "Ajouter ou supprimer des photos") }}
+        <div id="item-fields-list" class="w3-section" data-prototype="{% filter escape %}{{ _self.itemfields(form.slides.vars.prototype )  }}{% endfilter %}">
+            {% for itemField in form.slides %}
+                <div class="item">
+                    {{ _self.itemfields(itemField)  }}
+                </div>
+            {% endfor %}
         </div>
     </div>
-    {{ form_end(form) }}
-{% endset %}
-
-{{ f.container(content) }}
+    <div class="full">
+        <button type="button" id="add-item" onclick="$(document).formItemManager('addFormItem', {{ form.slides|length }});" class="w3-btn w3-lime" title="Ajouter un réseau">
+            <i class="fa fa-plus"></i> Ajouter
+        </button>
+        {{ form_widget(form._token) }}
+        {{ btn.save() }}
+    </div>
+</div>
+{{ form_end(form) }}
 
 <script type="text/javascript">
     $(document).ready(function () {

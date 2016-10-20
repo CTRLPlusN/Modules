@@ -1,20 +1,24 @@
 {% extends '@admin/base.html.twig' %}
 
-{% set css_form = 'w3-container w3-margin-top w3-margin-bottom' %}
-
 {% block body %}
-
-    {% include('@admin/layout/header.html.twig') with {'icon': 'file-o', 'title': 'Modifier une photo'} %}
-
-    <div class="w3-section w3-card-2 w3-padding">
-        <div class="w3-container ctrln-img-center">
-            <img class="w3-padding-24" id="image_thumb" src="{{absolute_url(asset(image.relativePath|default('uploads/design/no-image-box.png')) ) }}" style="width: 100%; max-width: 720px"/>
-        </div>
-        {{ form_start(form, { 'attr' : { 'class': css_form} } ) }}
+    <div class="{{ css_ctrl_bar }}">
+        {% if album is defined %}
+            {{ btn.href('admin_album_edit', {'id': album.id }, "<i class='fa fa-undo' aria-hidden='true'></i> Retour à l'album", 'w3-black w3-hover-lime') }} 
+            {{ btn.add('admin_image_add', {'id':album.id }, 'Ajouter une photo' ) }} 
+        {% endif %}
+        {{ btn.index('admin_image_index', null, 'Liste des photos') }}
+    </div>
+    <section class="{{ css_section }} ctrln-img-center">
+        {{ layout.header("Aperçu") }}
+        <img class="w3-padding-24" id="image_thumb" src="{{absolute_url(asset(image.relativePath|default('uploads/design/no-image-box.png')) ) }}" style="width: 100%; max-width: 720px"/>
+    </section>
+    <section class="{{ css_section }}">
+        {{ layout.header("Informations") }}
+        {{ form_start(form, { 'attr' : { 'class': css_form } } ) }}
         {{ form_errors(form) }}
         <div class="grid-2 has-gutter">
             <div class="one-half">
-                {{ form_label(form.title, "Titre*") }}
+                {{ form_label(form.title, "Titre") }}
                 {{ form_widget(form.title) }}
                 {{ form_errors(form.title) }}
             </div>
@@ -24,8 +28,8 @@
                 {{ form_errors(form.location) }}
             </div>
             <div class="full">
-                {{ form_label(form.mkdatetime, "Date d eprise de vue") }}
-                {{ form_widget(form.mkdatetime, { 'attr': { 'class': 'grid-2 has-gutter'} }) }}
+                {{ form_label(form.mkdatetime, "Date de prise de vue (JJ/MM/AAAA)") }}
+                {{ form_widget(form.mkdatetime, { 'attr': { 'class': 'grid-3 has-gutter'} }) }}
                 {{ form_errors(form.mkdatetime) }}
             </div>
             <div class="one-half">
@@ -34,20 +38,22 @@
                 {{ form_errors(form.album) }}
             </div>
             <div class="full">
-                {{ form_label(form.relativePath, "Importer le fichier *") }}
+                {{ form_label(form.relativePath, "Importer le fichier") }}
                 {{ form_widget(form.relativePath ) }}
             </div>
             <div class="full">
                 {{ form_label(form.description, "Description") }}
                 {{ form_widget(form.description , {'attr' : { 'rows':10 } }) }}
             </div>
+            <div class="full">
+                {{ btn.save() }} 
+                {% if image.id is not null %}
+                    {{ btn.delete('admin_image_delete', {'id' : image.id } ) }}
+                {% endif %}
+            </div>
         </div>
-        <p><em>* champs requis</em></p>
-        <button  class="w3-btn w3-black w3-hover-lime w3-margin-top" type="submit">Enregistrer</button>
         {{ form_end(form) }}
-    </div>
-
-
+    </section>
 {% endblock %}
 
 {% block javascripts  %}

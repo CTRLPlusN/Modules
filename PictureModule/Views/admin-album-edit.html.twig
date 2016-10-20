@@ -1,11 +1,12 @@
 {% extends '@admin/base.html.twig' %}
-{% set css_form = 'w3-container w3-margin-top w3-margin-bottom' %}
+
 {% block body %}
-
-    {% include('@admin/layout/header.html.twig') with {'icon': 'file-o', 'title': 'Editer un album'} %}
-
-    <div class="w3-section w3-card-2 w3-padding">
-        {{ form_start(form, { 'attr' : { 'class': css_form} } ) }}
+    <div class="w3-padding w3-right-align">
+        {{ btn.add('admin_album_add', null, 'Nouvel album') }} {{ btn.index('admin_album_index', null, 'Liste des albums') }}
+    </div>
+    <section class="{{ css_section }}">
+        {{ layout.header("Edition d'un album") }}
+        {{ form_start(form, { 'attr' : { 'class': 'w3-padding w3-padding-24'} } ) }}
         {{ form_errors(form) }}
         <div class="grid-1 has-gutter">
             <div class="">
@@ -18,26 +19,25 @@
                 {{ form_widget(form.description, { 'attr' : { 'rows':6} }) }}
                 {{ form_errors(form.description) }}
             </div>
-        </div>
-        {{ form_widget(form._token) }}
-        <p><em>* champs requis</em></p>
-        <button class="w3-btn w3-black w3-hover-lime w3-margin-top" type="submit">Enregistrer</button>
-        {{ form_end(form) }}
-        {% if album.id|length %}
-            <div class="w3-padding">
-                <h3>Photos dans l'album</h3>
-                <a  class="w3-btn w3-black w3-hover-lime w3-margin-top" href="{{ path('admin_image_add', {'id':album.id }) }}"><i class="fa fa-plus"></i> Ajouter une photo</a>
+            <div>
+                {{ form_widget(form._token) }}
+                {{ btn.save() }} 
+                {% if album.id is not null %}
+                    {{ btn.delete('admin_album_delete', {'id' : album.id }) }}
+                {% endif %}
             </div>
-
+        </div>
+        {{ form_end(form) }}
+    </section>
+    {# Affichage des photos si l'album existe #}
+    {% if album.id|length %}
+        <div class="w3-padding w3-right-align">
+            {{ btn.add('admin_image_add', {'id':album.id }, 'Ajouter une photo' ) }}
+        </div>
+        <section class="{{ css_section }}">
+            {{ layout.header("Photos de l'album") }}
             {% import '@picture/admin-macro-galery.html.twig' as grid %}
-            
             {{ grid.galery_album_edit(images) }}
-
-        {% endif %}
-    </div>
-</div>
-
-
-
-
+        </section>
+    {% endif %}
 {% endblock %}

@@ -4,7 +4,7 @@
 
     {% set content %}
         {% for item in items %}
-            <tr class="{{ item.parent ? '' : 'w3-pale-green' }}">
+            <tr class="{{ item.parent ? '' : 'ctrln-grey-lighten-2' }}">
                 {{ layout.col( loop.revindex) }}
                 {{ layout.edit( {'name': 'admin_category_edit', 'params': {'id':item.id } }, item.title, (item.parent ? 'w3-padding-left' : '') ) }}
                 {{ layout.col( item.created|date('Y-m-d') ) }}

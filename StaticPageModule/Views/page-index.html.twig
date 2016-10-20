@@ -22,22 +22,28 @@
 {% endmacro %}
 
 {% block body %}
-    {% include('AdminBundle:layout:header.html.twig') with {'href' : 'admin_staticpage_add', 'icon': 'file-o', 'title': 'Liste des Pages'} %}
-
-    <div class="w3-container w3-card-2 w3-padding w3-margin-top w3-red">
-        <h4><i class="fa fa-exclamation-triangle"></i> Ne rien modifier dans cette section !</h4>
+     <div class="{{ css_ctrl_bar }}">
+        {{ btn.add('admin_staticpage_add', null, 'Nouvelle page') }}
     </div>
+    <section class="{{ css_section }}">
+        {{ layout.header("Gestion des pages statiques") }}
+        <div class="w3-padding w3-margin-top w3-red">
+            <h4>
+                <i class="fa fa-exclamation-triangle"></i> Cette section est réservé au développeur du site internet. Ne rien modifier !
+            </h4>
+        </div>
 
-    <div class="w3-container w3-card-2 w3-padding w3-margin-top w3-light-grey">
-        {% if tree %}
-            <div class='category-nestedtree'>
-                <div class="grid-1 ctrln-grey-darken-4">
-                    {% for category in tree %}
-                        {{ _self.recursiveCategory(category, 'w3-padding-left') }}
-                    {% endfor %}
+        <div class="w3-container w3-card-2 w3-padding w3-margin-top w3-light-grey">
+            {% if tree %}
+                <div class='category-nestedtree'>
+                    <div class="grid-1 ctrln-grey-darken-4">
+                        {% for category in tree %}
+                            {{ _self.recursiveCategory(category, 'w3-padding-left') }}
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-        {% endif %}
-    </div>
+            {% endif %}
+        </div>
+    </section>
 
 {% endblock %}

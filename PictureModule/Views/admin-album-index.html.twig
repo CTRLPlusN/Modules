@@ -1,10 +1,12 @@
 {% extends '@admin/base.html.twig' %}
 
 {% block body %}
-    {% include '@admin/layout/header.html.twig' with {'href' : 'admin_album_add', 'icon': 'folder-open-o', 'title': 'Liste des Albums'} %}
-
-    {% import '@picture/admin-macro-galery.html.twig' as grid %}
-
-    {{ grid.galery_album(albums) }}
-
+    <div class="{{ css_ctrl_bar }}">
+        {{ btn.add('admin_album_add') }}
+    </div>
+    <section class="{{ css_section }}">
+        {{ layout.header("Liste des albums") }}
+        {% import '@picture/admin-macro-galery.html.twig' as grid %}
+        {{ grid.galery_album(albums) }}
+    </section>
 {% endblock %}

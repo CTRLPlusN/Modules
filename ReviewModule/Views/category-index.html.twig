@@ -1,34 +1,43 @@
 {% extends '@admin/base.html.twig' %}
 
 {% block body %}
-    {% include '@admin/layout/header.html.twig' with {'icon': 'bookmark-o', 'title': 'Gestion des Catégories'} %}
-
-    <div class="w3-section w3-card-2 w3-padding">
-        {{ form_start(form, { 'attr' : { 'class': 'w3-container'} } ) }}
+    <div class="w3-padding w3-right-align">
+        {{ btn.add('admin_category_add') }}
+    </div>
+    <section class="{{ css_section }}">
+        {{ layout.header("Edtion d\'une catégorie") }}
+        {{ form_start(form, { 'attr' : { 'class': 'w3-padding w3-padding-24'} } ) }}
         {{ form_errors(form) }}
-        <div class='w3-row-padding'>
-            <div class="w3-col s6">
+        <div class="grid-2 has-gutter">
+            <div>
                 {{ form_label(form.title, "Titre") }}
                 {{ form_widget(form.title) }}
                 {{ form_errors(form.title) }}
             </div>
-            <div class="w3-col s6">
+            <div>
                 {{ form_label(form.parent, "Principale") }}
                 {{ form_widget(form.parent) }}
                 {{ form_errors(form.parent) }}
             </div>
             {% if form.description %}
-                <div class="w3-col s6">
+                <div class="full">
                     {{ form_label(form.description, "Description") }}
                     {{ form_widget(form.description) }}
                     {{ form_errors(form.description) }}
                 </div>
             {% endif %}
+            <div class="full">
+                {{ btn.save() }} 
+                {% if category.id is not null %}
+                    {{ btn.delete('admin_category_delete', {'id' : category.id } ) }}
+                {% endif %}
+            </div>
         </div>
-        <button class="w3-btn w3-section w3-padding ctrln-grey-darken-3 w3-text-lime" type="submit">Enregistrer</button>
         {{ form_end(form) }}
-    </div>
-
-    {% include '@review/category-table.html.twig' with {'categories' : categories } only %}
+    </section>
+    <section class="{{ css_section }}">
+        {{ layout.header("Liste des catégories") }}
+        {% include '@review/category-table.html.twig' with {'categories' : categories } only %}
+    </section>
 
 {% endblock %}

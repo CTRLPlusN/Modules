@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use FM\ElfinderBundle\Form\Type\ElFinderType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
@@ -21,7 +21,7 @@ class ImageType extends AbstractType {
 
         $builder
                 ->add('title', TextType::class, array('required' => false))
-                ->add('mkdatetime', DateTimeType::class, array('required' => false))
+                ->add('mkdatetime', DateType::class, array('required' => false))
                 ->add('location', TextType::class, array('required' => false))
                 ->add('description', TextareaType::class, array('required' => false))
                 ->add('relativePath', ElFinderType::class, array('instance' => 'form', 'enable' => true))

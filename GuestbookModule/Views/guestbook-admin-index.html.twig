@@ -1,9 +1,8 @@
 {% extends '@admin/base.html.twig' %}
 
 {% block body %}
-
-    {% include('@admin/layout/header.html.twig') with {'icon': 'book', 'title': 'Livre d\'or'} %}
-
-    {% include '@guestbook/guestbook-admin-table.html.twig' with {'messages' : messages } only %}
-
+    <section class="{{ css_section }}">
+        {{ layout.header("Liste des messages du livre d'or") }}
+        {% include '@guestbook/guestbook-admin-table.html.twig' with {'messages' : messages } only %}
+    </section>
 {% endblock %}

@@ -1,12 +1,12 @@
 {% extends '@admin/base.html.twig' %}
 
-{% import '@admin/Macros/button.html.twig' as btn %}
-
 {% block body %}
-    {% include '@admin/layout/header.html.twig' with {'href' : 'admin_link_add', 'icon': 'folder-link', 'title': 'Ajouter un Lien'} %}
-
-    <div class="w3-section w3-card-2 w3-padding">
-        {{ form_start(form, { 'attr' : { 'class': 'w3-container'} } ) }}
+    <div class="{{ css_ctrl_bar }}">
+        {{ btn.add('admin_link_add') }}
+    </div>
+    <section class="{{ css_section }}">
+        {{ layout.header("Edtion d\'un lien externe") }}
+        {{ form_start(form, { 'attr' : { 'class': css_form } } ) }}
         {{ form_errors(form) }}
         <div class="grid-1 has-gutter">
             <div class="">
@@ -19,11 +19,17 @@
                 {{ form_widget(form.url) }}
                 {{ form_errors(form.url) }}
             </div>
+            <div class="full">
+                {{ btn.save() }}
+                {% if link.id is not null %}
+                    {{ btn.delete('admin_link_delete', {'id' : link.id } ) }}
+                {% endif %}
+            </div>
         </div>
-        <p><em>* champs requis</em></p>
-        {{ btn.save() }}
         {{ form_end(form) }}
-    </div>
-
-    {% include '@link/link-admin-table.html.twig' with {'links' : links } only %}
+    </section>
+    <section class="{{ css_section }}">
+        {{ layout.header("Liste des liens") }}
+        {% include '@link/link-admin-table.html.twig' with {'links' : links } only %}
+    </section>
 {% endblock %}

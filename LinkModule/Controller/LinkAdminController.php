@@ -42,7 +42,7 @@ class LinkAdminController extends Controller {
         }
 
         return $this->render('@link/link-admin-index.html.twig', array(
-                    'form' => $form->createView(), 'links' => $links
+                    'form' => $form->createView(), 'links' => $links, 'link' => $link
         ));
     }
 
