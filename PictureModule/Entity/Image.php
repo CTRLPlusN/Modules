@@ -20,7 +20,6 @@ class Image {
     /**
      * Titre de l'image
      * @ORM\Column(type="string", length=128, nullable=true)
-     * @Assert\NotBlank()
      * @Assert\Length(
      *      min = 2, max = 128,
      *      minMessage = "Texte trop court minimum : {{ limit }} caractères.",
@@ -38,8 +37,8 @@ class Image {
 
     /**
      *  Date de la prise de vue
-     * @ORM\Column(type="datetime", nullable=true)
-     *  @Assert\DateTime()
+     * @ORM\Column(type="date", nullable=true)
+     *  @Assert\Date()
      */
     protected $mkdatetime;
 

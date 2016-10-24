@@ -14,9 +14,15 @@
                 {{ form_widget(form.title) }}
                 {{ form_errors(form.title) }}
             </div>
-            <div class="one-half">
+            <div class="one-quarter">
                 {{ form_label(form.image, "Image d'entête") }}
                 {{ form_widget(form.image) }}
+            </div>
+            <div class="one-quarter">
+                {{ form_label(form.created, "Date de publication") }}
+                <div class="grid">
+                    {{ form_widget(form.created) }}
+                </div>
             </div>
             <div class="">
                 {{ form_label(form.category, "Catégorie") }}

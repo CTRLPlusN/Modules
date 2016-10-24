@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use FM\ElfinderBundle\Form\Type\ElFinderType;
@@ -46,6 +47,7 @@ class PostType extends AbstractType {
         $builder
                 ->add('title', TextType::class)
                 ->add('content', CKEditorType::class, array())
+                ->add('created', DateType::class)
                 ->add('published', ChoiceType::class, array(
                     'choices' => array('Publié' => true, 'En attente' => false)
                 ))
