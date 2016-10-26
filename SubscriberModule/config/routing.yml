@@ -1,0 +1,4 @@
+admin_subscriber:
+    resource: "@CTRLPlusN/Modules/SubscriberModule/Controller/SubscriberAdminController.php"
+    type:     annotation
+    prefix:   /secure/_admin # chemin de sécurité vers la zone admin

@@ -8,7 +8,7 @@
                 {{ layout.col( loop.revindex) }}
                 {{ layout.edit( {'name': 'admin_post_edit', 'params': {'id':item.id } }, item.title) }}
                 {{ layout.col( item.author.username|default('')) }}
-                {{ layout.col( item.category.parent is defined ? item.category.parent.title ~ '/' ~ item.category.title|capitalize : item.category.title|default('sans')|capitalize ) }}
+                {{ layout.col( item.category.parent is defined ? item.category.parent.title|default(null) ~ '/' ~ item.category.title|default('sans')|capitalize : item.category.title|default('sans')|capitalize ) }}
                 {{ layout.col( item.published ? 'Oui' : 'Non') }}
                 {{ layout.col( item.created|date('Y-m-d') ) }}
                 {{ layout.col( item.updated|date('Y-m-d') ) }}

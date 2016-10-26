@@ -1,0 +1,24 @@
+services:
+    module.subscriber_module:
+        class: CTRLPlusN\Modules\SubscriberModule\SubscriberModule
+
+parameters:
+    # Configuration de l'admin menu
+    menu.admin.subscriber_module:
+        - { icon: user, name: Inscription, route: admin_subscriber_index, params: {} }
+
+twig:
+    paths:
+        "%kernel.root_dir%/../src/CTRLPlusN/Modules/SubscriberModule/Views": subscriber
+
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    Subscriber:
+                        type: annotation
+                        dir: '%kernel.root_dir%/../src/CTRLPlusN/Modules/SubscriberModule/Entity'
+                        prefix: CTRLPlusN\Modules\SubscriberModule\Entity
+                        alias: Subscriber
+                        is_bundle: false

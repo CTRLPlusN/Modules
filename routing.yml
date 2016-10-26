@@ -21,6 +21,10 @@ ctrln_routes_module.slideshow:
     resource: "@CTRLPlusN/Modules/SlideshowModule/config/routing.yml"
     prefix:   /
     
+ctrln_routes_module.subscriber:
+    resource: "@CTRLPlusN/Modules/SubscriberModule/config/routing.yml"
+    prefix:   /
+    
 ctrln_routes_module.staticpage:
     resource: "@CTRLPlusN/Modules/StaticPageModule/config/routing.yml"
     prefix:   /
