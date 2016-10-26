@@ -5,8 +5,6 @@ namespace CTRLPlusN\Modules\GuestbookModule\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use CTRLPlusN\Modules\GuestbookModule\Entity\Message;
-use CTRLPlusN\Modules\GuestbookModule\Form\MessageType;
 
 /**
  * @Route("/guestbook")
