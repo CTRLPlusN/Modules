@@ -27,7 +27,7 @@ trait ShowByCategoryActionTrait {
             'published' => true,
             'category' => $arr,
         );
-        $posts = $this->container->get('module.review_module')->findAllPosts($num);
+        $posts = $this->container->get('module.review_module')->findAllPosts($num, 10, $parameters);
 
         return $this->render(self::TPL_SINGLE_CATEGORY, array(
                     'datas' => $posts,
