@@ -1,5 +1,11 @@
 {# Formulaire de recherche #}
 {{ form_start(form) }}
-{{ form_widget(form) }}
-<button type="submit" title="Rechercher" class="w3-btn w3-purple w3-large"><i class="fa fa-search"></i></button>
+<div class="grid">
+    <div>
+        {{ form_widget(form) }}
+    </div>
+    <div class="one-quarter w3-center">
+        <button type="submit" title="Rechercher" class="w3-btn w3-text-purple w3-white"><i class="fa fa-search"></i></button>
+    </div>
+</div>
 {{ form_end(form) }}

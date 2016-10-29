@@ -19,7 +19,10 @@ class ResearchType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->setAction($this->router->generate('post_research_index'))
-                ->add('string', TextType::class);
+                ->add('string', TextType::class, array(
+                    'label' => false,
+                        )
+        );
     }
 
     public function configureOptions(OptionsResolver $resolver) {

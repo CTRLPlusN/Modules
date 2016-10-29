@@ -34,4 +34,34 @@
     {% endif %}
 {% endif %}
 
-
+{% if block is same as('categories') %}
+    {% set close = false %}
+    {% for category in datas %}
+        {% if  category.parent is same as(null) %}
+            {% if close is same as(true) %}
+            </ul> 
+        </div> {# end container #}
+    </div> {# end card #}
+    <hr class="ctrln-hr-transparent" />
+{% endif %}
+<div class="w3-card-2 w3-section w3-white w3-round w3-display-container">
+    <div class="w3-display-topmiddle" style="top:-20px;">
+        <img src="{{ asset('assets/images/cloud-1.svg') }}" style="width: 65px;"/>
+    </div>
+    <header class="w3-container w3-indigo ctrln-font-heading w3-padding ctrln-round-top">
+        <h4 class="w3-margin-0"><i class="fa fa-bookmark w3-text-lime"></i> {{ category.title }}</h4>
+    </header>
+    <div class="w3-container w3-padding-0">
+        <ul class="w3-ul w3-hoverable">
+            {% set close = true %}
+        {% else %}
+            {% set nbrposts =  '(' ~category.posts|length|default(0) ~')' %}
+            <li class="w3-hover-sand">
+                <a class="w3-text-indigo"  href="{{ path('category_show', {'slug':category.slug } )}}" alt=""><i class="fa fa-caret-right"></i> {{ category.title|capitalize }} {{ nbrposts|default('') }}</a>
+            </li>
+        {% endif%}
+    {% endfor %}
+</ul> 
+</div> {# end container #}
+</div> {# end card #}
+{% endif %}
